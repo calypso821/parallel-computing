@@ -16,8 +16,14 @@ typedef struct
 pthread_t nit1;
 pthread_t nit2;
 
+// Function decleration
 void* funkcija_niti(void* arg);
+// Variable decleration (pointer to function)
 void* (*pfunkcija_niti)(void*);
+
+// Both function and variable declerations 
+// can be used as input to pthread_create() function
+// If function is passed - automatically converted to address
 
 argumenti_t args1;
 argumenti_t args2;
@@ -31,6 +37,7 @@ int main(){
 
     pfunkcija_niti = funkcija_niti;
     // dinamično ustvarim 3 velike vektorje v pomnilniku
+    // (float*) - cast return of malloc to float pointer
     pvecA =  (float*)malloc(NELEMENTS*sizeof(float));
     pvecB =  (float*)malloc(NELEMENTS*sizeof(float));
     pvecC =  (float*)malloc(NELEMENTS*sizeof(float));
@@ -38,6 +45,9 @@ int main(){
     // init vektorjev A in B:
     for (int i = 0; i < NELEMENTS; i++)
     {
+        // pvecA - address (pointer)
+        // + i (of size float)
+        // * - dereference, so value can be set
         *(pvecA + i) = 2.0;
         pvecB[i] = 3.0;
     }
@@ -74,6 +84,7 @@ int main(){
     float rezultat = 0.0;
     for (int i = 0; i < NELEMENTS; i++)
     {
+        // 5+5+5+5+5... 1024*1024
         rezultat += pvecC[i];
     }
 
@@ -92,6 +103,13 @@ void* funkcija_niti(void* arg){
     // Zato moram definirati nov kazalec na sterukturo in argument castat na ta tip
     argumenti_t* argumenti = (argumenti_t*) arg;
 
+    // NELEMENTS / 2 -> 1/2 nit0, 2/2 nit1
+    // / 2 <-- number of threads
+    // Start index: thread_0 -> 0 
+    // End index: thread_0 -> (1 * NELEMENTS/2) - 1  <-- if i < no -1 needed
+    // Start index: thread_1 -> 1 * NELEMENTS/2
+    // End index: thread_1 -> (2 * NELEMENTS/2) - 1  <-- if i < no -1 needed
+    // Length of for loop: NELEMENTS / 2
     for (int i = argumenti->thread_ID * (NELEMENTS/2); i < (argumenti->thread_ID + 1) * (NELEMENTS/2); i++)
     {
         argumenti->pvecC[i] = argumenti->pvecA[i] + argumenti->pvecB[i];

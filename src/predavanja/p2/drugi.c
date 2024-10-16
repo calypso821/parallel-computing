@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+// struct argumenti {
+//     unsigned int thread_ID;
+// };
+// Usage struct argumenti arg;
+
+// Define struct type 
 typedef struct
 {
     unsigned int thread_ID;
@@ -11,13 +17,24 @@ typedef struct
 pthread_t nit1;
 pthread_t nit2;
 
+// Function decelration 
+// returns void pointer
+// argument void pointer
 void* funkcija_niti(void* arg);
 
 argumenti_t args1;
 argumenti_t args2;
 
+// Variable decleration
+// pointer pfunkcija_niti
+// (*pfunkcija_niti) = pointer to a function
+// points to function which takes void* argument
+// points to function which returns void*
+void* (*pfunkcija_niti)(void*) = &funkcija_niti;
 
-void* (*pfunkcija_niti)(void*);
+// void* pfunkcija_niti(void*) = function decleartion
+// void* *pfunkcija_niti(void*) = void** pfunkcija_niti(void*) 
+// function (returns pointer to a void*)
 
 
 int main(){
@@ -53,9 +70,11 @@ void* funkcija_niti(void* arg){
     // Zato moram definirati nov kazalec na sterukturo in argument castat na ta tip
     argumenti_t* argumenti = (argumenti_t*) arg;
 
+    // Already casted
     if (argumenti->thread_ID == 1){
         printf("Sem nit 1 \n");
     }
+    // Cast + access
     else if (((argumenti_t* )arg)->thread_ID == 2){
         printf("Sem nit 2 \n");
     }
