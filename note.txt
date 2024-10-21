@@ -1,0 +1,4 @@
+TODO:
+- lock vecscalar
+- comapre times
+- check sling login

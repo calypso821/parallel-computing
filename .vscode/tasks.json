@@ -11,7 +11,8 @@
 				"${file}",
 				"-o",
 				//"${fileDirname}/${fileBasenameNoExtension}",
-				"${workspaceFolder}/build/${fileBasenameNoExtension}"
+				"${workspaceFolder}/build/${fileBasenameNoExtension}",
+				//"-lrt"
 			],
 			"options": {
 				//"cwd": "${fileDirname}"

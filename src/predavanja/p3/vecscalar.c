@@ -62,25 +62,12 @@ int main(){
 
     printf("Element 12450 vecC je %f \n", pvecC[12450]);
 
-    // Sestevanje vseh delnih vrednsoti (se ne da pararelizirat)
+    // Sestevanje vseh delnih vrednsoti (neucinkovito)
     for (int i = 0; i < NELEMENTS; i++) {
         dot_product += pvecC[i];
     }
 
     printf("Skalarni produkt vecC je %f \n", dot_product);
-
-    // šele sedaj je varno zaključiti main().
-
-    // preverimo rezultat:
-    // float rezultat = 0.0;
-    // for (int i = 0; i < NELEMENTS; i++)
-    // {
-    //     // 5+5+5+5+5... 1024*1024
-    //     rezultat += pvecC[i];
-    // }
-
-    // printf("Rezultat = %f \n", rezultat);
-    
 
     free(pvecA);
     free(pvecB);
@@ -102,7 +89,7 @@ void* mnozi(void* args) {
     // Start index: thread_1 -> 1 * NELEMENTS/2
     // End index: thread_1 -> (2 * NELEMENTS/2) - 1  <-- if i < no -1 needed
     // Length of for loop: NELEMENTS / 2
-    for (int i = 0); i < NELEMENTS/NTHREADS; i++)
+    for (int i = 0; i < NELEMENTS/NTHREADS; i++)
     {
         pvecC[i+id*(NELEMENTS/NTHREADS)] = pvecA[i+id*(NELEMENTS/NTHREADS)] * pvecB[i+id*(NELEMENTS/NTHREADS)];
         // WRONG!! RWA nevarnost (read after write)
