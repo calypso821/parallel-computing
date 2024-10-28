@@ -6,9 +6,9 @@
 // ce imamo 1024*1024*512 uporabi double namesto float
 #define NTHREADS 4
 
-float* pvecA;
-float* pvecB;
-float* pvecC;
+float *pvecA;
+float *pvecB;
+float *pvecC;
 
 float dot_product = 0;
 
@@ -16,7 +16,7 @@ pthread_t nit[NTHREADS];
 unsigned int id_niti[NTHREADS];
 
 // Function decleration
-void* mnozi(void* args);
+void *mnozi(void *args);
 
 // Both function and variable declerations 
 // can be used as input to pthread_create() function
@@ -75,7 +75,7 @@ int main(){
     return 0;
 }
 
-void* mnozi(void* args) {
+void *mnozi(void *args) {
 
     // args = void* 
     // pretvorimo v unsigned int* (pointer)

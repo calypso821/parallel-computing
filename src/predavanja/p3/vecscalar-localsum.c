@@ -11,17 +11,16 @@ struct timespec timeStart, timeEnd;
 
 typedef struct {
     unsigned int id;
-    double* psum;
+    double *psum;
 } argument_thread_t;
 
-double* pvecA;
-double* pvecB;
-double* pvecC;
+double *pvecA;
+double *pvecB;
+double *pvecC;
 
 double dot_product = 0;
 
 pthread_t nit[NTHREADS];
-unsigned int id_niti[NTHREADS];
 argument_thread_t arguments[NTHREADS];
 double local_sums[NTHREADS];
 
@@ -104,14 +103,14 @@ int main(){
     return 0;
 }
 
-void* multiplay(void* args) {
+void *multiplay(void *args) {
 
     // args = void* 
     // pretvorimo v unsigned int* (pointer)
     // *() - dereferenciramo vrednsot
-    argument_thread_t* argument = (argument_thread_t*)args;
+    argument_thread_t *argument = (argument_thread_t*)args;
     unsigned int id = argument->id;
-    double* plocal_sum = argument->psum;
+    double *plocal_sum = argument->psum;
 
     // NELEMENTS / 2 -> 1/2 nit0, 2/2 nit1
     // / 2 <-- number of threads
