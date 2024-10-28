@@ -82,7 +82,7 @@ void* mnozi(void* args) {
     // *() - dereferenciramo vrednsot
     unsigned int id = *((unsigned int*)args);
 
-        // NELEMENTS / 2 -> 1/2 nit0, 2/2 nit1
+    // NELEMENTS / 2 -> 1/2 nit0, 2/2 nit1
     // / 2 <-- number of threads
     // Start index: thread_0 -> 0 
     // End index: thread_0 -> (1 * NELEMENTS/2) - 1  <-- if i < no -1 needed

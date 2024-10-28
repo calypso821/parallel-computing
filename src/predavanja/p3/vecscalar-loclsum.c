@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <time.h>
 
-#define NELEMENTS 1024*1024
+#define NELEMENTS 1024*1024*512
 // ce imamo 1024*1024*512 uporabi double namesto float
-#define NTHREADS 4
+#define NTHREADS 16
 
-//timespec start, end;
-
-pthread_mutex lock;
+struct timespec timeStart, timeEnd;
 
 typedef struct {
-    unsigned int id
-} arguemnt_thread_t;
+    unsigned int id;
+    double* psum;
+} argument_thread_t;
 
 double* pvecA;
 double* pvecB;
@@ -23,9 +23,10 @@ double dot_product = 0;
 pthread_t nit[NTHREADS];
 unsigned int id_niti[NTHREADS];
 argument_thread_t arguments[NTHREADS];
+double local_sums[NTHREADS];
 
 // Function decleration
-void* mnozi(void* args);
+void* multiplay(void* args);
 
 // Both function and variable declerations 
 // can be used as input to pthread_create() function
@@ -34,11 +35,8 @@ void* mnozi(void* args);
 
 
 int main(){
-    // Init 
-
-    pthread_mutex_init(&lock, )
     // dinamično ustvarim 3 velike vektorje v pomnilniku
-    // (float*) - cast return of malloc to float pointer
+    // (double*) - cast return of malloc to double pointer
     pvecA =  (double*)malloc(NELEMENTS*sizeof(double));
     pvecB =  (double*)malloc(NELEMENTS*sizeof(double));
     pvecC =  (double*)malloc(NELEMENTS*sizeof(double));
@@ -47,21 +45,25 @@ int main(){
     for (int i = 0; i < NELEMENTS; i++)
     {
         // pvecA - address (pointer)
-        // + i (of size float)
+        // + i (of size double)
         // * - dereference, so value can be set
         *(pvecA + i) = 1.0;
         pvecB[i] = 2.0;
     }
 
+    // Start measuring time
+    clock_gettime(CLOCK_REALTIME, &timeStart);
+
     for (int i=0; i<NTHREADS; i++) {
         arguments[i].id = i;
+        arguments[i].psum = &local_sums[i];
         pthread_create(
             &nit[i],            // kazalec na nit, ki jo ustvarjamo
             NULL,
-            mnozi,              // funkcija, ki jo izvede ustvarjena nit
+            multiplay,              // funkcija, ki jo izvede ustvarjena nit
             (void*)(&arguments[i])
         );                      // argumenti funkcije, ki jo izvede ustvarjena nit - 
-                                // edini argument je navaden void naslov, zato moram naslov na strukturo args1
+                                // edini argument je navaden void naslov (1B), zato moram naslov na strukturo args1
                                 // pretvorit v navaden void naslov
 
     }
@@ -70,20 +72,31 @@ int main(){
         pthread_join(nit[i], NULL);
     }
 
-    // Vse niti so se zakljucile in so izracunani vsi delni produkti v pvecC
-
-    printf("Element 12450 vecC je %f \n", pvecC[12450]);
-
-    // Sestevanje vseh delnih vrednsoti (se ne da pararelizirat)!!!
+    // 1. Sestevanje vseh delnih vrednsoti (NEUCINKOVITO) - NOT OK
     // for (int i = 0; i < NELEMENTS; i++) {
     //     dot_product += pvecC[i];
     // }
 
-    //printf("Skalarni produkt vecC je %f \n", dot_product);
+    // 2. Sestevanje lokalnih vsot (UCINKOVITO) - OK
+    for (int i=0; i<NTHREADS; i++) {
+        //printf("Local sum [%d]: %f\n", i, local_sums[i]);
+        dot_product += local_sums[i];
+    }
 
-    printf("Skalarni produkt vecC je %f \n", dot_product);
+    clock_gettime(CLOCK_REALTIME, &timeEnd);
 
-    
+    // Vse niti so se zakljucile in so izracunani vsi delni produkti v pvecC
+
+    printf("Element 12450 vecC je %f \n", pvecC[12450]);
+
+    printf("Skalarni produkt vecC je %f\n", dot_product);
+
+    // seconds (long int)
+    // nano seconds (long int) / 1e9 (1 bill) -> convert to nano seconds (double)
+    //double elapsed_time = (timeEnd.tv_sec - timeStart.tv_sec) + (timeEnd.tv_nsec - timeStart.tv_nsec) / 1e9;
+    // nano seconds (long int) * 1e-9 (multiply nano) -> convert to nano seconds (double)
+    double elapsed_time = (timeEnd.tv_sec - timeStart.tv_sec) + (timeEnd.tv_nsec - timeStart.tv_nsec) * 1e-9;
+    printf("Elapsed time: %.9f seconds\n", elapsed_time);
 
     free(pvecA);
     free(pvecB);
@@ -91,13 +104,15 @@ int main(){
     return 0;
 }
 
-void* mnozi(void* args) {
+void* multiplay(void* args) {
 
     // args = void* 
     // pretvorimo v unsigned int* (pointer)
     // *() - dereferenciramo vrednsot
-    argument_thread_t* arguemnt = (argument_thread_t*)args;
+    argument_thread_t* argument = (argument_thread_t*)args;
     unsigned int id = argument->id;
+    double* plocal_sum = argument->psum;
+
     // NELEMENTS / 2 -> 1/2 nit0, 2/2 nit1
     // / 2 <-- number of threads
     // Start index: thread_0 -> 0 
@@ -105,21 +120,13 @@ void* mnozi(void* args) {
     // Start index: thread_1 -> 1 * NELEMENTS/2
     // End index: thread_1 -> (2 * NELEMENTS/2) - 1  <-- if i < no -1 needed
     // Length of for loop: NELEMENTS / 2
-    for (int i = 0); i < NELEMENTS/NTHREADS; i++)
+    for (int i = 0; i < NELEMENTS/NTHREADS; i++)
     {
         pvecC[i+id*(NELEMENTS/NTHREADS)] = pvecA[i+id*(NELEMENTS/NTHREADS)] * pvecB[i+id*(NELEMENTS/NTHREADS)];
-        // WRONG!! RWA nevarnost (read after write)
+        // 1. WRONG!! RWA nevarnost (read after write)
         // dot_product += pvecC[i+id*(NELEMENTS/NTHREADS)];
 
-        // Local sum
-        //*plocal_sum += pvecC[i+id*(NELEMENTS/NTHREADS)];
-
-        // Lock (blocking function)
-        pthread_mutex_lock(&lock);
-        // Critical section
-        dot_product += pvecC[i+id*(NELEMENTS/NTHREADS)];
-        // Unlock
-        pthread_mutex_unlock(&lock);
-
+        // 2. Local sum
+        *plocal_sum += pvecC[i+id*(NELEMENTS/NTHREADS)];
     }
 }
