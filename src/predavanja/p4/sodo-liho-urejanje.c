@@ -1,13 +1,48 @@
 
-#define NTHREADS 4 // Move to header
+#define NTHREADS 4  // Move to header
+#define N 10        // Number of elements
 
-
+unsigned int seznam[N];
 void swap( int *pa, int *pb);
 
 int main() {
+    
+    srand(time(NULL));
+    // Init sezanm random N elements 
+    for (int i = 0; i  < N; i++) {
+            seznam[i] = rand() % 100;
+    }
+
+    for (int i = 0; i < N; i++) {
+        // Sodi prehod
+        for (int j = 0; j < N; j+2) {
+            swap(&seznam[j], &seznam[j+1]);
+        }
+        printf("SODI prehod\n");
+        izpis();
+
+        // Lihi prehod
+        for (int j = 1; j < N-1; j+2) {
+            swap(&seznam[j], &seznam[j+1]);
+        }
+        printf("LIHI prehod\n");
+        izpis();
+    }
     return 0;
 }
 
-void swap(int *pa, int *pb) {
+void swap(unsigned int *pa, unsigned int *pb) {
+    unsigned int tmp;
+    if (*pb < *pa) {
+        tmp = *pa;
+        *pa = *pb;
+        *pb = tmp;
+    }
+}
 
+void izpis(void) {
+    for (int i = 0; i < N; i++) {
+        printf("%d ", seznam[i]);
+    }
+    printf("\n\n");
 }
