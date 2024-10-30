@@ -13,6 +13,7 @@
 				//"${fileDirname}/${fileBasenameNoExtension}",
 				"${workspaceFolder}/build/${fileBasenameNoExtension}",
 				//"-lrt"
+				"-I${workspaceFolder}/include",
 			],
 			"options": {
 				//"cwd": "${fileDirname}"

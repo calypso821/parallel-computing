@@ -1,2 +1,22 @@
 TODO:
-- check sling loginz
+
+Sodo liho: 
+Sodi prehod: i = 2*id , i < n, i = i + 2*MTHREADS
+Prepreka (lock)
+Lihi prehod: i = 2*id +1, i < N-1, i=i+2*NT
+
+hpc-login3.arnes.si
+
+rezervacija: --reservation=fri
+
+build: srun gcc -o out_name program.c
+srun --reservation=fri gcc -o sl sodo-liho.c
+
+run: srun out_name
+srun --reservation=fri sl
+
+
+Mount remote: 
+sshfs mk5098@hpc-login3.arnes.si:/d/hpc/home/mk5098 ~/remote-mount/
+Unmount: 
+sudo umount ~/remote-mount
