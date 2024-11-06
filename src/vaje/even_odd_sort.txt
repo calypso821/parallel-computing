@@ -1,0 +1,33 @@
+=================================================
+Ko je N/NTHREADS - SODO:
+1. Sodi prehod
+- dolzina seznama za vsako nit je N/NTREADS
+zadnja nit: N/THREADS + N|NTHREADS
+zacetek: id * N/NTHREADS
+
+2. Lihi prehod
+- dolizna seznama za vsako nit N/NTHREADS
+zadnja nit (N/NTHREADS + N|NTHREADS) - 1
+zacetek: id * N/NTHREADS + 1
+
+=================================================
+Ko je N/NTHREADS - LIHO:
+1. Sodi prehod
+niti s sodim indexom zacnejo na svojem indexu
+niti z lihim indexom zacnejo na svojem indexu + 1
+
+Soda nit
+zacetek: id * N/NTHREADS
+urejajo seznam dolzine: N/NTHREADS + 1 
+razen zadnja: enega manj N/NHTREADS
+
+Liha nit
+zacetek: id * N/NTHREADS + 1
+urejajo seznam dolzine: N/NTHREADS - 1
+
+2. Lihi prehod
+niti s sodim indexom zacnejo na svojem indexu + 1
+niti z lihim indexom zacnejo na svojem indexu
+
+Obratno kot sodi prehod!!
+=================================================

@@ -1,6 +1,6 @@
 #include "config.h"
 
-#define N 8        // Number of elements (naj bo sodo)
+#define N 10        // Number of elements (naj bo sodo)
 
 typedef struct {
     int id;
@@ -23,20 +23,9 @@ void odd_pass();
 void printSeznam(int*);
 
 int main() {
-    // N elementov
-    pseznam = (int*)malloc(N*sizeof(int));
-    
-    srand(time(NULL));
-    // Init sezanm random N elements 
-    for (int i = 0; i  < N; i++) {
-        // *(pseznam + i)
-        pseznam[i] = rand() % 100;
-    }
-
     // Init barrier
     pthread_barrier_init(&barrier, NULL, NTHREADS);
 
-    // Init threads
     for (size_t i = 0; i < NTHREADS; i++) {
         arguments[i].id = i;
         pthread_create(
@@ -47,6 +36,15 @@ int main() {
         );
     }
 
+    // N elementov
+    pseznam = (int*)malloc(N*sizeof(int));
+    
+    srand(time(NULL));
+    // Init sezanm random N elements 
+    for (int i = 0; i  < N; i++) {
+        // *(pseznam + i)
+        pseznam[i] = rand() % 100;
+    }
 
 //     printSeznam(pseznam);
 
