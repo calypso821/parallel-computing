@@ -9,7 +9,7 @@
 #include <time.h>
 #include <stddef.h>
 
-#define NTHREADS 3
+#define NTHREADS 4
 
 #define __PRINT__
 
