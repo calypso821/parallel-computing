@@ -174,7 +174,7 @@ void process_odd_chunk(int id) {
         // }
         for (size_t j = id * chunk + (id % 2); j < (id + 1) * chunk- (last && !even_n); j+=2) 
         {
-            printf("Thread %d, even pass, index:  %d\n", id, j);
+            //printf("Thread %d, even pass, index:  %d\n", id, j);
             swap(pseznam + j, pseznam + j + 1, id);
         }
 
@@ -202,7 +202,7 @@ void process_odd_chunk(int id) {
         {
             // if even N + last thread: (id + 1) * CHUNK -1
             // if odd N + last thread: (id + 1) * CHUNK
-            printf("Thread %d, odd pass, index:  %d\n", id, j);
+            //printf("Thread %d, odd pass, index:  %d\n", id, j);
             swap(pseznam + j, pseznam + j + 1, id);
         }
 
