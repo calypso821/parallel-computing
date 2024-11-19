@@ -1,12 +1,11 @@
 #include "config.h"
 
-#define N 1000       // Number of elements (naj bo sodo)
-
-// Build: srun --reservation=fri gcc -O2 -o sl even_odd_sort.c -pthread
-// Run: srun --reservation=fri --cpus-per-task=8 sl
+#define N 1000000  // Number of elements
 
 typedef struct {
-    int id;
+    int tid;        // i
+    int tstart;     // i * N / NTHREADS
+    int tend;       // (i+1) * N / NTHREADS
 } args_t;
 
 struct timespec timeStart, timeEnd;
@@ -16,13 +15,13 @@ pthread_t threads[NTHREADS];
 args_t arguments[NTHREADS];
 pthread_barrier_t barrier;
 
-bool sorted = true;
 int pass_cnt = 0;
+bool sorted = true;
 
 void *sort(void *args);
 
 void swap(int *pa, int *pb);
-void printList(int*);
+void printList(int *pseznam);
 
 int main() {
     printf("NTHREADS: %d\n", NTHREADS);
@@ -48,7 +47,9 @@ int main() {
     clock_gettime(CLOCK_REALTIME, &timeStart);
 
     for (size_t i = 0; i < NTHREADS; i++) {
-        arguments[i].id = i;
+        arguments[i].tid = i;
+        arguments[i].tstart = i * N / NTHREADS;
+        arguments[i].tend = ((i + 1) * N / NTHREADS) - 1;
         pthread_create(
             &threads[i],            // kazalec na nit, ki jo ustvarjamo
             NULL,
@@ -57,14 +58,13 @@ int main() {
         );
     }
 
-   
     for (size_t i = 0; i < NTHREADS; i++) {
         pthread_join(threads[i], NULL);
     }
 
     clock_gettime(CLOCK_REALTIME, &timeEnd);
 
-    printf("Orderd list: ");
+    printf("Orderd list   : ");
     printList(pseznam);
 
     double elapsed_time = (timeEnd.tv_sec - timeStart.tv_sec) + (timeEnd.tv_nsec - timeStart.tv_nsec) * 1e-9;
@@ -75,7 +75,10 @@ int main() {
 
 void *sort(void *args) {
     args_t *parguments = (args_t*)args;
-    int id = parguments->id;
+    int id = parguments->tid;
+    int start = parguments->tstart;
+    int end = parguments->tend;
+
 
     for (size_t i = 0; i < N; i++)
     {
@@ -84,21 +87,52 @@ void *sort(void *args) {
             pass_cnt++;
         }
 
-        // Sodi prehod
-        for (size_t j = id * 2; j < N; j=j + NTHREADS * 2) 
+        // Even pass
+        // Sodi indexi (0, 2, 4, 6...)
+        for (size_t j = start + (start % 2); j < end + 1; j+=2) 
         {
-            swap(pseznam + j, pseznam + j + 1);
+            // Check if right elemnt is still in array
+            if (j + 1 < N)
+            {
+                //printf("Thread %d, even pass, index:  %d\n", id, j);
+                swap(pseznam + j, pseznam + j + 1);
+            }
         }
         // ========= POCAKAJ (barrier) ==========
         pthread_barrier_wait(&barrier);
 
-        // Lihi prehod
-        for (size_t j = (id * 2)+ 1; j < N - 1; j=j + NTHREADS * 2)
-        {
-            swap(pseznam + j, pseznam + j + 1);
+#ifdef __PRINT__
+        if (id == 0) {
+            printf("Even pass : ");
+            printList(pseznam);
         }
-        // ========= POCAKAJ (barrier) ==========
         pthread_barrier_wait(&barrier);
+#endif
+        // Odd pass
+        // Lihi indexi (1, 3, 5, 7, ...)
+        // Ce je start lihi + 1
+        for (size_t j = start + (start % 2 == 0); j < end + 1; j+=2) 
+        {
+            // Check if right elemnt is still in array
+            if (j + 1 < N)
+            {
+                //printf("Thread %d, odd pass, index:  %d\n", id, j);
+                swap(pseznam + j, pseznam + j + 1);
+            }
+
+        }
+        // Wait for all threads to finish both even and odd passes
+        // before reading from variable sorted
+        pthread_barrier_wait(&barrier);
+
+#ifdef __PRINT__
+        if (id == 0) {
+            printf("Odd pass: ");
+            printList(pseznam);
+            printf("===========================================\n");
+        }
+        pthread_barrier_wait(&barrier);
+#endif
 
         if (sorted) {
             //printf("Thread %d exited\n", id);
@@ -132,7 +166,7 @@ void swap(int *pa, int *pb) {
         int tmp = *pa;
         *pa = *pb;
         *pb = tmp;
-
+        
         sorted = false;
     }
 }

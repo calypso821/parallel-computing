@@ -1,0 +1,13 @@
+
+even_odd_sort
+NTHREADS: 8
+N elements: 1000000 
+Number of passes: 495059
+Elapsed time: 249.658288513 seconds
+
+
+even_odd_block
+NTHREADS: 8
+N elements: 1000000
+Number of passes: 494998
+Elapsed time: 277.821554365 seconds

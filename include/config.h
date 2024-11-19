@@ -11,6 +11,6 @@
 
 #define NTHREADS 4
 
-#define __PRINT__
+//#define __PRINT__
 
 #endif /* CONFIG_H */                   

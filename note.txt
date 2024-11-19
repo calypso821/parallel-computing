@@ -15,8 +15,10 @@ srun --reservation=fri gcc -o sl sodo-liho.c
 run: srun out_name
 srun --reservation=fri sl
 
+// Build: srun --reservation=fri gcc -O2 -o eos even_odd_sort.c -pthread
+// Run: srun --reservation=fri --cpus-per-task=8 eos
 
 Mount remote: 
-sshfs mk5098@hpc-login3.arnes.si:/d/hpc/home/mk5098 ~/remote-mount/
+sshfs mk5098@hpc-login3.arnes.si:/d/hpc/home/mk5098 /data/remote/arnes
 Unmount: 
-sudo umount ~/remote-mount
+sudo umount /data/remote/arnes
