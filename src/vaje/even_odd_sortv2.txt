@@ -1,0 +1,49 @@
+senzma: N
+st niti: NT
+
+
+start: `(id * N) / NT` - zaokorzi dol (celostevilsko)
+end: `[((id + 1) * N) / NT]  - 1`   - zaokorzi dol
+
+sodi prehod: 
+- vse niti zacenjo na sodem indexu
+lihi prehod:
+- vse niti zacenjo na lihem indexu
+za zadnjo nit pogled ali se lahko primerja 2 
+
+Soda dolzina - soda ok, liha 1 vec
+Lihi dolzina - soda 1 vec, liha ok
+
+Sodi prehod
+`start + (start % 2)`
+- 9 + 1
+- 13 + 1
+- 0 + 0
+- 4 + 0
+Lihi prehod
+`start + (start % 2 == 0)`
+- 9 + 1
+- 13 + 1
+- 0 + 0
+- 4 + 0
+
+Za zadnjo nit -> End = N - 1 (zadnji elemnt)
+
+N = 18
+NT = 4
+
+indexes: 
+- Nit0: 0, 3
+- Nit1: 4, 8
+- Nit2: 9, 12
+- Nit3: 13, 17
+
+
+N = 19
+NT = 4
+
+indexes: 
+- Nit0: 0, 3
+- Nit1: 4, 8
+- Nit2: 9, 13
+- Nit3: 14, 18
