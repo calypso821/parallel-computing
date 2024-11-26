@@ -1,6 +1,9 @@
 #include "config.h"
 
-#define N 1000       // Number of elements (naj bo sodo)
+// Config.h
+// #define NTHREADS
+// #define SEED
+// #define N
 
 // Build: srun --reservation=fri gcc -O2 -o sl even_odd_sort.c -pthread
 // Run: srun --reservation=fri --cpus-per-task=8 sl
@@ -25,21 +28,25 @@ void swap(int *pa, int *pb);
 void printList(int*);
 
 int main() {
+    printf("Even-Odd sort\n");
     printf("NTHREADS: %d\n", NTHREADS);
     printf("N elements: %d\n", N);
 
     // N elementov
     pseznam = (int*)malloc(N*sizeof(int));
     
-    srand(time(NULL));
+    srand(SEED);
     // Init sezanm random N elements 
     for (int i = 0; i  < N; i++) {
         // *(pseznam + i)
         pseznam[i] = rand() % 100;
     }
+
+#ifdef __PRINT__
     printf("Unordered list: ");
     printList(pseznam);
     printf("\n");
+#endif
 
     // Init barrier
     pthread_barrier_init(&barrier, NULL, NTHREADS);
@@ -64,8 +71,12 @@ int main() {
 
     clock_gettime(CLOCK_REALTIME, &timeEnd);
 
+#ifdef __PRINT__
     printf("Orderd list: ");
     printList(pseznam);
+    printf("\n");
+#endif
+
 
     double elapsed_time = (timeEnd.tv_sec - timeStart.tv_sec) + (timeEnd.tv_nsec - timeStart.tv_nsec) * 1e-9;
     printf("Elapsed time: %.9f seconds\n", elapsed_time);

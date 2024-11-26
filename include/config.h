@@ -11,6 +11,10 @@
 
 #define NTHREADS 4
 
+#define SEED 1000
+
+#define N 1000
+
 //#define __PRINT__
 
 #endif /* CONFIG_H */                   

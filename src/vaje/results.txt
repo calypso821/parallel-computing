@@ -1,13 +1,57 @@
-
-even_odd_sort
+[mk5098@hpc-    login3 ~]$ srun --reservation=fri --cpus-per-task=8 eos
+Even-Odd sort
 NTHREADS: 8
-N elements: 1000000 
-Number of passes: 495059
-Elapsed time: 249.658288513 seconds
+N elements: 100000
+Number of passes: 49500
+Elapsed time: 5.026335122 seconds
 
-
-even_odd_block
+[mk5098@hpc-login3 ~]$ srun --reservation=fri --cpus-per-task=8 eos_block
+Even-Odd sort block
 NTHREADS: 8
+N elements: 100000
+Number of passes: 49500
+Elapsed time: 4.338322271 seconds
+
+=======================================================
 N elements: 1000000
-Number of passes: 494998
-Elapsed time: 277.821554365 seconds
+Number of passes: 499318
+SEED 926
+
+1. Block
+32 THREADS - better (more threads)
+Elapsed time: 197.886999929 seconds
+16 THREADS - better (more threads)
+Elapsed time: 218.329640833 seconds
+8 THREADS
+Elapsed time: 273.351330603 seconds
+4 THREADS
+Elapsed time: 392.028187138 seconds
+
+More threads -> more parallel processing
+Good locality 
+More threads -> better performance
+===================================================
+2. Non block
+32 THREADS - even worse (locality)
+Elapsed time: 521.037819425 seconds
+16 THREADS - worse (locality)
+Elapsed time: 473.446670374 seconds
+8 THEADS - best
+Elapsed time: 251.750450694 seconds
+4 THREADS - worse (less threads)
+Elapsed time: 370.185530786 seconds
+
+More threads -> more parallel processing, worse locality
+Lokality peaks at 8 threads
+More threads -> worse performance (locality)
+L1 cache line can hold exactly 16 integers (64 bytes)
+
+4 threads:  8 elements × 4B = 32 bytes  (½ cache line)
+8 threads: 16 elements × 4B = 64 bytes  (1 cache line) <- Perfect fit!
+16 threads: 32 elements × 4B = 128 bytes (2 cache lines)
+32 threads: 64 elements × 4B = 256 bytes (4 cache lines)
+
+8 THREADS (best locality for non block)
+Block 273s vs Non-Block 251s
+- In block, if one section needs more swaps, that thread is busy longer
+- Block might cause more cache misses at block boundaries
