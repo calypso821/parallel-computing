@@ -4,11 +4,12 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 
-#define ROWS 1024*8
+#define ROWS 1024*32
 #define COLS ROWS // Cols = Rows
 
 #define BLOCKDIM 32 // 2^5
 #define N ROWS
+
 // Host
 float *h_ma;
 float *h_mb;
@@ -19,43 +20,46 @@ float *d_ma;
 float *d_mb;
 float *d_mc;
 
-
-// Koda za GPU napravo
-// __global__ (KERNEL) funkcija, se izvaja na napravi, zaganan iz gostitelja 
-// __device__ funkcija, se izvaja na napravi, zagana na napravi
+// Code for GPU device
+// __global__ (KERNEL) function which runs on device (GPU), executed from host
+// __device__ function which runs on device (GPU), executed from device
 
 __global__ void mul_mat_naive(float *mata, float *matb, float *matc)
 {
-    // Index bloka * veliksot bloka 
-    // + nit znotraj bloka
-    // Dobimo globalni index vseh niti (1M)
-    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    // Block index * size of block
+    // + sequential thread id of block
+    // Global index of all threads
     int col = blockIdx.x * blockDim.x + threadIdx.x;
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
 
-    // Stevilo niti = velikost matrike C (ROWS * COLS)
-    // Vsaka nit racuna 1 element matrike C
+    // Number of threads = size of matrix C (ROWS * COLS)
+    // Every thread its own element
 
-    matc[row * ROWS + col] = 0.0;
+    matc[row * COLS + col] = 0.0;
 
+    // Traverse trough all elemnts in row, col
     for (size_t i = 0; i < N; i++ )
     {
-        // Memory coalessing PROBLEM!!
-        // Sosednji element dosotopa do istih elemntov ko prejsnji (row, col)
-        // V celotni vrstici / stolpcu dostopamo do enakih elemntov
-
+        // Row --> mata[row * COLS + i]
+        // Column --> matb[i * COLS + col]
         // matC[row, col] = matA[row, i:0..N] * matB[i:0..N, col]
-        // Premik po vrstici --> mata[row * ROWS + i]
-        // Premik po stolpcu --> matb[i * ROWS + col]
-        matc[row * ROWS + col] += mata[row * ROWS + i] * matb[i * ROWS + col];
+        matc[row * COLS + col] += mata[row * COLS + i] * matb[i * COLS + col];
+
+        // Memory coalessing PROBLEM!!
+        // Threads from block will access same elements (row, col) as previous thread 
+        // Threads in block (access same row, diffrent col) - executing at same time
+        // Reading same elements (LOAD) at same time - BAD
+        // GOAL - threads from same block access neighbour elements
+        // Use of shared memory
     }
 }
 
 
 __global__ void mul_mat_tiles(float *mata, float *matb, float *matc)
 {
-    // Index bloka * veliksot bloka 
-    // + nit znotraj bloka
-    // Dobimo globalni index vseh niti (1M)
+    // Block index * size of block
+    // + sequential thread id of block
+    // Global index of all threads
     int col = blockIdx.x * blockDim.x + threadIdx.x;
     int row = blockIdx.y * blockDim.y + threadIdx.y;
     
@@ -64,146 +68,163 @@ __global__ void mul_mat_tiles(float *mata, float *matb, float *matc)
 
     float c = 0.0;
 
-    // Prostor za plscici v shread memory
+    // Shared memory for tiles
     __shared__ float tileA[BLOCKDIM][BLOCKDIM];
     __shared__ float tileB[BLOCKDIM][BLOCKDIM];
 
-    // Po vseh ploscicah (tilih) po matriki A in B, ki jih potrebujemo za izracun C
-    // Izbiram in nalagam jih po parih
-
-    for (int tile = 0; tile < (N / BLOCKDIM); tile++)
+    // Itterate over all tiles in row/col of matrix A and B, we need to calculate C
+    for (int tile = 0; tile < N / BLOCKDIM; tile++)
     {
-        // preberimo poscici A in B iz globalnega pomnilnika
-        // Vsaka nit v bloku prenese 1 element
-        // Lokalni ploscicic 
+        // Read tile A and B from global memory into shared
 
-        // * BLOCKDIM (linearizacija)?? 
-        // mata[blockIdx.y * blockDim.y + local_row][tile * blockDim.x + local_col] NOT OK??? 
-        // mata in matb ni matrika?? Just array?? 
-
+        // Tile A
+        // 2D array [x, y] --> linearize!
+        // tileA[local_row][local_col] = mata[(blockIdx.y * blockDim.y + threadIdx.y),
+        //                                    (blockIdx.x * blockDim.x + threadIdx.x)];
+        // Linearized (row * COLS + col)
+        // block: x = variable (loop), y = fixed
         tileA[local_row][local_col] = mata[(blockIdx.y * blockDim.y + local_row) * BLOCKDIM + 
-                                            (tile * blockDim.x + local_col)]
+                                           (tile * blockDim.x + local_col)];
+
+        // Tile B
+        // 2D array [x, y] --> linearize!
+        // tileB[local_row][local_col] = matb[(blockIdx.y * blockDim.y + threadIdx.y),
+        //                                    (blockIdx.x * blockDim.x + threadIdx.x)];
+        // Linearized (row * COLS + col)
+        // block: x = fixed, y = variable (loop)
         tileB[local_row][local_col] = matb[(tile * blockDim.y + local_row) * BLOCKDIM + 
-                                            (blockIdx.x * blockDim.x + local_col)]
+                                           (blockIdx.x * blockDim.x + local_col)];
 
 
-        // Pocakaj, da vse niti prenesejo svoje elemente
+        // Wait for all threads to move their elements
         __syncthreads();
 
-        // Zmnozi ploscici in rezultat pisi v plosico C
+        // Multiply tiles A and B and save into C
+        // Each thread its own C
         for (int i = 0; i < BLOCKDIM; i++)
         {
             c += tileA[local_row][i] * tileB[i][local_col];
         }
 
-        // Pocakaj, pred ponovnim nalaganjem novih ploscic
+        // Wait till all multiplication is done
+        // Than start loading next 2 tiles...
         __syncthreads();
     }
 
-    // Prenesi element c nazaj v globalni pomnilnik v matriko C
-    // What is rowN???
-    // ROWS?? or
-    matc[rowN, col] = c;
-
+    // Transfer calculated element C back to global matrix 
+    matc[row * BLOCKDIM + col] = c;
 }
 
-//(const float *a, const float *b, const float *c, const in n)
-
-
-
-// Koda za gostitelja (CPU)
+// Host code (CPU)
 int main(int argc, char *argv[])
 {
-    // Rezerviramo prostor na pomnilniku gostitelja
-    h_ma = (float *)malloc(MAT_SIZE * sizeof(float));
-    h_mb = (float *)malloc(MAT_SIZE * sizeof(float));
-    h_mc = (float *)malloc(MAT_SIZE * sizeof(float));
-
-    // Rezerviramo prostor na pomnilniku GPU
-    cudaMalloc(&d_va, MAT_SIZE * sizeof(float));
-    cudaMalloc(&d_vb, MAT_SIZE * sizeof(float));
-    cudaMalloc(&d_vc, MAT_SIZE * sizeof(float));
-
-    // Vector initialization
+    // Allocate host memory
+    h_ma = (float *)malloc(ROWS * COLS * sizeof(float));
+    h_mb = (float *)malloc(ROWS * COLS * sizeof(float));
+    h_mc = (float *)malloc(ROWS * COLS * sizeof(float));
+    
+    // Allocate device memory
+    cudaMalloc(&d_ma, ROWS * COLS * sizeof(float));
+    cudaMalloc(&d_mb, ROWS * COLS * sizeof(float));
+    cudaMalloc(&d_mc, ROWS * COLS * sizeof(float));
+    
+    // Matrix initialization
+    // ROWS = number of elements in column
+    // COLS = number of elements in row
     for (size_t i = 0; i < ROWS; i++) {
-        for (size_t j = 0; i < COLS; j++)
-        {
-            h_ma[i * ROWS + j] = 1.0f;
-            h_mb[i * ROWS + j] = 2.0f;
+        for (size_t j = 0; j < COLS; j++) {
+            // Row-major ordering (row by row)
+            h_ma[i * COLS + j] = 1.0f;
+            h_mb[i * COLS + j] = 2.0f;
+
+            // Column-major ordering (col by col)
+            // h_ma[j * ROWS + i] = 9.0f;
+            // h_mb[j * ROWS + i] = 4.0f;
         }
     }
+    printf("Initialization done.\n");
 
     // cudaMemcpy
-    // Naslov ponor podatkov (destination)
-    // Naslov izvora podatkov (source)
-    // Stevilo B za prenos
-    // Smer prenosa (H -> D, D -> H)
+    // Destination address
+    // Source address
+    // Size (number of Bytes)
+    // Data transfer direction (H -> D, D -> H)
 
-    // Prenos podatkov iz pomnilnika gostitelja v pomnilnik naprav3
-    cudaMemecpy((void *)d_ma,
+    // Transfer data from host memory to device memory (GPU)
+    // Matrix A
+    cudaMemcpy((void *)d_ma,
                 (void *)h_ma,
-                MAT_SIZE * sizeof(float),
+                ROWS * COLS * sizeof(float),
                 cudaMemcpyHostToDevice);
-
-    cudaMemecpy((void *)d_mb,
+    // Matrix B
+    cudaMemcpy((void *)d_mb,
                 (void *)h_mb,
-                MAT_SIZE * sizeof(float),
+                ROWS * COLS * sizeof(float),
                 cudaMemcpyHostToDevice);
 
-    // Zazeni kernel na napravi (GPU)
-    // Niti v 1 bloku --> tvorjenje snopov
-    // Skupaj blok 256 (2^8)
-    // rows: 2^4, cols: 2^4 (16x16)
-    // rows: 2^5, cols: 2^3 (32x8)
-    dim3 threadsInBlock[BLOCKDIM, BLOCKDIM, 1];
-    // St blokov 
-    // Y (rows): (2^20 / 2^4 = 2^16) 64K (1024 * 1024 elements)
-    // X (cols): (2^10 / 2^4 = 2^6) 64 (1024 elements)
-    dim3 numOfBlocks[ROWS/BLOCKDIM, COLS/BLOCKDIM, 1];
+    // dim3 CUDA type for specifiying dimension 
+    // Thread → Warp → Block → Grid
+    // 1 thread (part of warp) executed on single SP
+    // 32 threads in Warp (32 SP used to process 1 warp at same time)
+    // Block contains multiple warps (common sizes: 128, 256, 512 threads)
+    // Grid = collection of blocks
+    // Blocks are sent on SM 
+    // all threads in warp executed on multiple SPs in SM
+
+    // Block size: 32x32
+    dim3 threadsInBlock(BLOCKDIM, BLOCKDIM, 1);
+
+    // Number of blocks
+    dim3 numOfBlocks(COLS/BLOCKDIM, ROWS/BLOCKDIM, 1);
+
+    printf("Computing matrix multiplication...\n");
+    float miliseconds;
 
     // CUDA events for measuring times
     cudaEvent_t start, end;
     cudaEventCreate(&start);
     cudaEventCreate(&end);
 
-
-    // Start recording
-    cudaEventRecorde(start);
-
-    add_mat<<<numOfBlocks, threadsInBlock>>>>(d_ma, d_mb, d_mc);
+    // Start recording (Naive)
+    cudaEventRecord(start);
+    mul_mat_naive<<<numOfBlocks, threadsInBlock>>>(d_ma, d_mb, d_mc);
 
     // Stop recording
-    cudaEventRecorde(end);
+    cudaEventRecord(end);
     cudaEventSynchronize(end);
 
-    float miliseconds = 0.0;
+    miliseconds = 0.0;
     cudaEventElapsedTime(&miliseconds, start, end);
-    printf("Kernel execution time: %0.3f miliseconds\n", miliseconds);
+    printf("NAIVE kernel execution time: %0.3f miliseconds\n", miliseconds);
 
-    // Prevajanje programa 
-    // srun --partition=gpu nvcc dotprod.cu -o dtoprod
-    // srun --partition=gpu --ntask=1 --gpus=1 --mem-per-cpu=1600MB? 
+    // Start recording (Tiles)
+    cudaEventRecord(start);
+    mul_mat_tiles<<<numOfBlocks, threadsInBlock>>>(d_ma, d_mb, d_mc);
 
-    // Prenos rezultate iz naprave v gostitelja
-    cudaMemecpy((void *)h_mc,
+    // Stop recording
+    cudaEventRecord(end);
+    cudaEventSynchronize(end);
+
+    miliseconds = 0.0;
+    cudaEventElapsedTime(&miliseconds, start, end);
+    printf("Tiles execution time: %0.3f miliseconds\n", miliseconds);
+
+    // Transfer data from GPU to host
+    cudaMemcpy((void *)h_mc,
                 (void *)d_mc,
-                MAT_SIZE * sizeof(float),
+                ROWS * COLS * sizeof(float),
                 cudaMemcpyDeviceToHost);
+    // row, col
+    printf("c[1023, 1023] = %f\n", h_mc[1023 * COLS + 1023]);
+    printf("c[1024, 1023] = %f (BAD ROW)\n", h_mc[1024 * COLS + 1023]);
+    printf("c[1023, 1024] = %f (BAD COL)\n", h_mc[1023 * COLS + 1024]);
 
-
-    // Print result (should be 6)
-    printf("Element: %d", h_mc[567 * ROWS + 120]);
-    // Delni produkt bedno 2 (1 * 2)
-    // Dimenzija = 1024 * 8 
-    // 2 * 8K --> 16K
-    // Element should be ~ 16k
-
-    // Sprostimo prostor gostitelja
+    // Free host memory
     free(h_ma);
     free(h_mb);
     free(h_mc);
 
-    // Sprostimo prostor na naprvi (GPU)
+    // Free device memory (GPU)
     cudaFree(d_ma);
     cudaFree(d_mb);
     cudaFree(d_mc);

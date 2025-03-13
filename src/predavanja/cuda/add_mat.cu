@@ -4,10 +4,11 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 
-#define ROWS 1024*8
-#define COLS 1024*8
+#define ROWS 1024
+#define COLS 512
 #define MAT_SIZE ROWS * COLS
 #define BLOCK_SIZE 16 // 2^4
+
 // Host
 float *h_ma;
 float *h_mb;
@@ -19,99 +20,138 @@ float *d_mb;
 float *d_mc;
 
 
-// Koda za GPU napravo
-// __global__ (KERNEL) funkcija, se izvaja na napravi, zaganan iz gostitelja 
-// __device__ funkcija, se izvaja na napravi, zagana na napravi
+// Code for GPU device
+// __global__ (KERNEL) function which runs on device (GPU), executed from host
+// __device__ function which runs on device (GPU), executed from device
 
+// function is executed on threads of GPU
 __global__ void add_mat(float *mata, float *matb, float *matc)
 {
-    // Index bloka * veliksot bloka 
-    // + nit znotraj bloka
-    // Dobimo globalni index vseh niti (1M)
+    // paramters = pointers to GPU memory
+
+    // blockIdx: block index (which block in the grid)
+    // blockDim: block dimensions (threads per block)
+    // threadIdx: thread index within its block
+
+    // Block index * size of block
+    // + sequential thread id of block
+    // Global index of all threads
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
-    matc[x * ROWS + y] = mata[x * ROWS + y]  + matb[x * ROWS + y];
+    // Addition of matrix a and b into c
 
+    // Row - major ordering
+    matc[y * COLS + x] = mata[y * COLS + x]  + matb[y * COLS + x];
+    // Col - major ordering
+    //matc[x * ROWS + y] = mata[x * ROWS + y]  + matb[x * ROWS + y];
 }
 
-
-//(const float *a, const float *b, const float *c, const in n)
-
-
-
-// Koda za gostitelja (CPU)
+// Host code (CPU)
 int main(int argc, char *argv[])
 {
-    // Rezerviramo prostor na pomnilniku gostitelja
+    printf("Matrix addition started...\n");
+    
+    // Allocate host memory
     h_ma = (float *)malloc(MAT_SIZE * sizeof(float));
     h_mb = (float *)malloc(MAT_SIZE * sizeof(float));
     h_mc = (float *)malloc(MAT_SIZE * sizeof(float));
-
-    // Rezerviramo prostor na pomnilniku GPU
-    cudaMalloc(&d_va, MAT_SIZE * sizeof(float));
-    cudaMalloc(&d_vb, MAT_SIZE * sizeof(float));
-    cudaMalloc(&d_vc, MAT_SIZE * sizeof(float));
-
-    // Vector initialization
+    
+    // Allocate device memory
+    cudaMalloc(&d_ma, MAT_SIZE * sizeof(float));
+    cudaMalloc(&d_mb, MAT_SIZE * sizeof(float));
+    cudaMalloc(&d_mc, MAT_SIZE * sizeof(float));
+    
+    // Matrix initialization
+    // ROWS = number of elements in column
+    // COLS = number of elements in row
     for (size_t i = 0; i < ROWS; i++) {
-        for (size_t j = 0; i < COLS; j++)
-        {
-            h_ma[i * ROWS + j] = 9.0f;
-            h_mb[i * ROWS + j] = 4.0f;
+        for (size_t j = 0; j < COLS; j++) {
+            // Row-major ordering (row by row)
+            h_ma[i * COLS + j] = 9.0f;
+            h_mb[i * COLS + j] = 4.0f;
+
+            // Column-major ordering (col by col)
+            // h_ma[j * ROWS + i] = 9.0f;
+            // h_mb[j * ROWS + i] = 4.0f;
         }
     }
+    printf("Initialization done.\n");
 
     // cudaMemcpy
-    // Naslov ponor podatkov (destination)
-    // Naslov izvora podatkov (source)
-    // Stevilo B za prenos
-    // Smer prenosa (H -> D, D -> H)
+    // Destination address
+    // Source address
+    // Size (number of Bytes)
+    // Data transfer direction (H -> D, D -> H)
 
-    // Prenos podatkov iz pomnilnika gostitelja v pomnilnik naprav3
-    cudaMemecpy((void *)d_ma,
+    // Transfer data from host memory to device memory (GPU)
+    printf("Transfering data from host to GPU...\n");
+    // Matrix A
+    cudaMemcpy((void *)d_ma,
                 (void *)h_ma,
                 MAT_SIZE * sizeof(float),
                 cudaMemcpyHostToDevice);
-
-    cudaMemecpy((void *)d_mb,
+    // Matrix B
+    cudaMemcpy((void *)d_mb,
                 (void *)h_mb,
                 MAT_SIZE * sizeof(float),
                 cudaMemcpyHostToDevice);
 
-    // Zazeni kernel na napravi (GPU)
-    // Niti v 1 bloku --> tvorjenje snopov
-    // Skupaj blok 256 (2^8)
+    // dim3 CUDA type for specifiying dimension 
+    // Thread → Warp → Block → Grid
+    // 1 thread (part of warp) executed on single SP
+    // 32 threads in Warp (32 SP used to process 1 warp at same time)
+    // Block contains multiple warps (common sizes: 128, 256, 512 threads)
+    // Grid = collection of blocks
+    // Blocks are sent on SM 
+    // all threads in warp executed on multiple SPs in SM
+
+    // Block size: 256 (2^8)
     // rows: 2^4, cols: 2^4 (16x16)
     // rows: 2^5, cols: 2^3 (32x8)
-    dim3 threadsInBlock[BLOCK_SIZE, BLOCK_SIZE, 1];
-    // St blokov 
+    dim3 threadsInBlock(BLOCK_SIZE, BLOCK_SIZE, 1);
+
+    // Number of blocks
     // Y (rows): (2^20 / 2^4 = 2^16) 64K (1024 * 1024 elements)
     // X (cols): (2^10 / 2^4 = 2^6) 64 (1024 elements)
-    dim3 numOfBlocks[ROWS/BLOCK_SIZE, COLS/BLOCK_SIZE, 1];
 
-    add_mat<<<numOfBlocks, threadsInBlock>>>>(d_ma, d_mb, d_mc);
+    // Blocks in x dimension: COLS (num of ele in row) / BLOCK_SIZE 
+    // Blocks in y dimension: ROWS (num of ele in col) / BLOCK_SIZE 
+    dim3 numOfBlocks(COLS/BLOCK_SIZE, ROWS/BLOCK_SIZE, 1);
+    //dim3 numOfBlocks(ROWS/BLOCK_SIZE, COLS/BLOCK_SIZE, 1);
 
-    // Prevajanje programa 
-    // srun --partition=gpu nvcc dotprod.cu -o dtoprod
-    // srun --partition=gpu --ntask=1 --gpus=1 --mem-per-cpu=1600MB? 
+    // Kernel lunch on GPU
+    printf("Computing matrix addition...\n");
+    add_mat<<<numOfBlocks, threadsInBlock>>>(d_ma, d_mb, d_mc);
 
-    // Prenos rezultate iz naprave v gostitelja
-    cudaMemecpy((void *)h_mc,
+    // Transfer data from GPU to host
+    printf("Transfering data from GPU to host...\n");
+    cudaMemcpy((void *)h_mc,
                 (void *)d_mc,
                 MAT_SIZE * sizeof(float),
                 cudaMemcpyDeviceToHost);
 
 
-    // Print result (should be 6)
-    printf("Element: %d", h_mc[567 * ROWS + 120]);
+    // Result test (should be 13)
 
-    // Sprostimo prostor gostitelja
+    // Row-major
+    printf("Element: %f\n", h_mc[1023 * COLS + 250]);
+    printf("Element: %f (BAD ROW)\n", h_mc[1024 * COLS + 511]);
+    printf("Element: %f\n", h_mc[1023 * COLS + 511]);
+    printf("Element: %f (BAD COL)\n", h_mc[1023 * COLS + 512]);
+
+    // Column-major
+    // printf("Element: %f\n", h_mc[511 * ROWS + 511]);
+    // printf("Element: %f (BAD COL)\n", h_mc[512 * ROWS + 511]);
+    // printf("Element: %f\n", h_mc[511 * ROWS + 1023]);
+    // printf("Element: %f (BAD ROW)\n", h_mc[511 * ROWS + 1024]);
+
+    // Free host memory
     free(h_ma);
     free(h_mb);
     free(h_mc);
 
-    // Sprostimo prostor na naprvi (GPU)
+    // Free device memory (GPU)
     cudaFree(d_ma);
     cudaFree(d_mb);
     cudaFree(d_mc);
