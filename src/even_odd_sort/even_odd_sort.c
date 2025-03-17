@@ -39,7 +39,7 @@ int main() {
     // Init sezanm random N elements 
     for (int i = 0; i  < N; i++) {
         // *(pseznam + i)
-        pseznam[i] = rand() % 100;
+        pseznam[i] = rand() % N;
     }
 
 #ifdef __PRINT__

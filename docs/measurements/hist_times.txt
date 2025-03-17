@@ -1,0 +1,290 @@
+./resources/input/image0.jpg, Run #1: GPU (kernel): 0.04192 ms, GPU (total): 0.17600 ms, CPU: 8.67408 ms
+./resources/input/image0.jpg, Run #2: GPU (kernel): 0.04150 ms, GPU (total): 0.19507 ms, CPU: 9.22586 ms
+./resources/input/image0.jpg, Run #3: GPU (kernel): 0.04131 ms, GPU (total): 0.17693 ms, CPU: 8.68311 ms
+./resources/input/image0.jpg, Run #4: GPU (kernel): 0.03990 ms, GPU (total): 0.17104 ms, CPU: 8.70332 ms
+./resources/input/image0.jpg, Run #5: GPU (kernel): 0.04144 ms, GPU (total): 0.17722 ms, CPU: 8.71575 ms
+./resources/input/image0.jpg, Run #6: GPU (kernel): 0.04189 ms, GPU (total): 0.19478 ms, CPU: 8.68672 ms
+./resources/input/image0.jpg, Run #7: GPU (kernel): 0.04006 ms, GPU (total): 0.17184 ms, CPU: 8.86081 ms
+./resources/input/image0.jpg, Run #8: GPU (kernel): 0.04160 ms, GPU (total): 0.17984 ms, CPU: 8.68038 ms
+./resources/input/image0.jpg, Run #9: GPU (kernel): 0.04118 ms, GPU (total): 0.17661 ms, CPU: 8.68351 ms
+./resources/input/image0.jpg, Run #10: GPU (kernel): 0.04150 ms, GPU (total): 0.18861 ms, CPU: 8.67698 ms
+./resources/input/image0.jpg, Run #11: GPU (kernel): 0.04214 ms, GPU (total): 0.18659 ms, CPU: 8.76263 ms
+./resources/input/image0.jpg, Run #12: GPU (kernel): 0.04147 ms, GPU (total): 0.17597 ms, CPU: 9.49228 ms
+./resources/input/image0.jpg, Run #13: GPU (kernel): 0.04237 ms, GPU (total): 0.17594 ms, CPU: 8.70687 ms
+./resources/input/image0.jpg, Run #14: GPU (kernel): 0.04227 ms, GPU (total): 0.18749 ms, CPU: 9.49480 ms
+./resources/input/image0.jpg, Run #15: GPU (kernel): 0.04243 ms, GPU (total): 0.17894 ms, CPU: 9.21323 ms
+./resources/input/image0.jpg, Run #16: GPU (kernel): 0.04163 ms, GPU (total): 0.18442 ms, CPU: 8.68938 ms
+./resources/input/image0.jpg, Run #17: GPU (kernel): 0.04192 ms, GPU (total): 0.17450 ms, CPU: 8.66618 ms
+./resources/input/image0.jpg, Run #18: GPU (kernel): 0.04106 ms, GPU (total): 0.18720 ms, CPU: 9.30141 ms
+./resources/input/image0.jpg, Run #19: GPU (kernel): 0.04285 ms, GPU (total): 0.17859 ms, CPU: 8.70345 ms
+./resources/input/image0.jpg, Run #20: GPU (kernel): 0.04109 ms, GPU (total): 0.19299 ms, CPU: 9.22318 ms
+-------------------------------- SUMMARY FOR ./resources/input/image0.jpg --------------------------------
+Image size: 640 x 427 (273280 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.0415765 ms, GPU total: 0.181528 ms
+CPU: 8.8922 ms
+SPEEDUPS:
+CPU vs GPU total: 48.9852 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image1.jpg, Run #1: GPU (kernel): 0.07526 ms, GPU (total): 0.36029 ms, CPU: 21.04567 ms
+./resources/input/image1.jpg, Run #2: GPU (kernel): 0.07520 ms, GPU (total): 0.38419 ms, CPU: 20.92412 ms
+./resources/input/image1.jpg, Run #3: GPU (kernel): 0.07392 ms, GPU (total): 0.36070 ms, CPU: 20.80267 ms
+./resources/input/image1.jpg, Run #4: GPU (kernel): 0.06800 ms, GPU (total): 0.35366 ms, CPU: 20.88277 ms
+./resources/input/image1.jpg, Run #5: GPU (kernel): 0.07555 ms, GPU (total): 0.35178 ms, CPU: 20.83839 ms
+./resources/input/image1.jpg, Run #6: GPU (kernel): 0.06813 ms, GPU (total): 0.37344 ms, CPU: 22.27296 ms
+./resources/input/image1.jpg, Run #7: GPU (kernel): 0.06822 ms, GPU (total): 0.36256 ms, CPU: 20.75349 ms
+./resources/input/image1.jpg, Run #8: GPU (kernel): 0.06803 ms, GPU (total): 0.34861 ms, CPU: 20.73576 ms
+./resources/input/image1.jpg, Run #9: GPU (kernel): 0.06803 ms, GPU (total): 0.38608 ms, CPU: 20.76753 ms
+./resources/input/image1.jpg, Run #10: GPU (kernel): 0.07597 ms, GPU (total): 0.35482 ms, CPU: 20.78334 ms
+./resources/input/image1.jpg, Run #11: GPU (kernel): 0.07046 ms, GPU (total): 0.36275 ms, CPU: 20.84512 ms
+./resources/input/image1.jpg, Run #12: GPU (kernel): 0.06797 ms, GPU (total): 0.33024 ms, CPU: 23.99280 ms
+./resources/input/image1.jpg, Run #13: GPU (kernel): 0.06970 ms, GPU (total): 0.35299 ms, CPU: 24.40574 ms
+./resources/input/image1.jpg, Run #14: GPU (kernel): 0.06800 ms, GPU (total): 0.35312 ms, CPU: 24.49948 ms
+./resources/input/image1.jpg, Run #15: GPU (kernel): 0.06832 ms, GPU (total): 0.36704 ms, CPU: 20.77680 ms
+./resources/input/image1.jpg, Run #16: GPU (kernel): 0.06832 ms, GPU (total): 0.36883 ms, CPU: 21.88274 ms
+./resources/input/image1.jpg, Run #17: GPU (kernel): 0.07587 ms, GPU (total): 0.38186 ms, CPU: 20.78525 ms
+./resources/input/image1.jpg, Run #18: GPU (kernel): 0.07510 ms, GPU (total): 0.36442 ms, CPU: 20.71441 ms
+./resources/input/image1.jpg, Run #19: GPU (kernel): 0.07526 ms, GPU (total): 0.46797 ms, CPU: 21.50789 ms
+./resources/input/image1.jpg, Run #20: GPU (kernel): 0.07440 ms, GPU (total): 0.41440 ms, CPU: 24.75728 ms
+-------------------------------- SUMMARY FOR ./resources/input/image1.jpg --------------------------------
+Image size: 1024 x 640 (655360 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.0714855 ms, GPU total: 0.369987 ms
+CPU: 21.6987 ms
+SPEEDUPS:
+CPU vs GPU total: 58.6471 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image2.jpg, Run #1: GPU (kernel): 0.14771 ms, GPU (total): 0.67005 ms, CPU: 51.61928 ms
+./resources/input/image2.jpg, Run #2: GPU (kernel): 0.14058 ms, GPU (total): 0.65926 ms, CPU: 52.26616 ms
+./resources/input/image2.jpg, Run #3: GPU (kernel): 0.14118 ms, GPU (total): 0.66077 ms, CPU: 52.36234 ms
+./resources/input/image2.jpg, Run #4: GPU (kernel): 0.14099 ms, GPU (total): 0.65795 ms, CPU: 51.58780 ms
+./resources/input/image2.jpg, Run #5: GPU (kernel): 0.14483 ms, GPU (total): 0.66224 ms, CPU: 51.33414 ms
+./resources/input/image2.jpg, Run #6: GPU (kernel): 0.14442 ms, GPU (total): 0.65690 ms, CPU: 51.12042 ms
+./resources/input/image2.jpg, Run #7: GPU (kernel): 0.14154 ms, GPU (total): 0.66963 ms, CPU: 51.29827 ms
+./resources/input/image2.jpg, Run #8: GPU (kernel): 0.14742 ms, GPU (total): 0.68122 ms, CPU: 51.31012 ms
+./resources/input/image2.jpg, Run #9: GPU (kernel): 0.14138 ms, GPU (total): 0.64605 ms, CPU: 57.83005 ms
+./resources/input/image2.jpg, Run #10: GPU (kernel): 0.14589 ms, GPU (total): 0.67424 ms, CPU: 60.47500 ms
+./resources/input/image2.jpg, Run #11: GPU (kernel): 0.14003 ms, GPU (total): 0.66608 ms, CPU: 57.34840 ms
+./resources/input/image2.jpg, Run #12: GPU (kernel): 0.14374 ms, GPU (total): 0.85482 ms, CPU: 51.25009 ms
+./resources/input/image2.jpg, Run #13: GPU (kernel): 0.14659 ms, GPU (total): 0.75891 ms, CPU: 53.04877 ms
+./resources/input/image2.jpg, Run #14: GPU (kernel): 0.14608 ms, GPU (total): 0.70579 ms, CPU: 51.21112 ms
+./resources/input/image2.jpg, Run #15: GPU (kernel): 0.14288 ms, GPU (total): 0.68083 ms, CPU: 52.66098 ms
+./resources/input/image2.jpg, Run #16: GPU (kernel): 0.14710 ms, GPU (total): 0.72784 ms, CPU: 52.11373 ms
+./resources/input/image2.jpg, Run #17: GPU (kernel): 0.14646 ms, GPU (total): 0.74851 ms, CPU: 57.49322 ms
+./resources/input/image2.jpg, Run #18: GPU (kernel): 0.14336 ms, GPU (total): 0.65482 ms, CPU: 53.12291 ms
+./resources/input/image2.jpg, Run #19: GPU (kernel): 0.14352 ms, GPU (total): 0.69114 ms, CPU: 51.19616 ms
+./resources/input/image2.jpg, Run #20: GPU (kernel): 0.14182 ms, GPU (total): 0.67907 ms, CPU: 51.41902 ms
+-------------------------------- SUMMARY FOR ./resources/input/image2.jpg --------------------------------
+Image size: 1280 x 1280 (1638400 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.143876 ms, GPU total: 0.690306 ms
+CPU: 53.1034 ms
+SPEEDUPS:
+CPU vs GPU total: 76.9273 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image3.jpg, Run #1: GPU (kernel): 0.12870 ms, GPU (total): 0.64704 ms, CPU: 46.63010 ms
+./resources/input/image3.jpg, Run #2: GPU (kernel): 0.13517 ms, GPU (total): 0.61622 ms, CPU: 47.35895 ms
+./resources/input/image3.jpg, Run #3: GPU (kernel): 0.12877 ms, GPU (total): 0.67398 ms, CPU: 47.94245 ms
+./resources/input/image3.jpg, Run #4: GPU (kernel): 0.12963 ms, GPU (total): 0.63286 ms, CPU: 47.60307 ms
+./resources/input/image3.jpg, Run #5: GPU (kernel): 0.12963 ms, GPU (total): 0.63139 ms, CPU: 47.41545 ms
+./resources/input/image3.jpg, Run #6: GPU (kernel): 0.12992 ms, GPU (total): 0.60576 ms, CPU: 55.51262 ms
+./resources/input/image3.jpg, Run #7: GPU (kernel): 0.13386 ms, GPU (total): 0.60848 ms, CPU: 46.29327 ms
+./resources/input/image3.jpg, Run #8: GPU (kernel): 0.13229 ms, GPU (total): 0.62474 ms, CPU: 46.65106 ms
+./resources/input/image3.jpg, Run #9: GPU (kernel): 0.13318 ms, GPU (total): 0.67046 ms, CPU: 46.84073 ms
+./resources/input/image3.jpg, Run #10: GPU (kernel): 0.13408 ms, GPU (total): 0.61910 ms, CPU: 46.91872 ms
+./resources/input/image3.jpg, Run #11: GPU (kernel): 0.13046 ms, GPU (total): 0.61603 ms, CPU: 46.28237 ms
+./resources/input/image3.jpg, Run #12: GPU (kernel): 0.12880 ms, GPU (total): 0.66589 ms, CPU: 51.11927 ms
+./resources/input/image3.jpg, Run #13: GPU (kernel): 0.12778 ms, GPU (total): 0.61187 ms, CPU: 46.77502 ms
+./resources/input/image3.jpg, Run #14: GPU (kernel): 0.13232 ms, GPU (total): 0.63962 ms, CPU: 46.89104 ms
+./resources/input/image3.jpg, Run #15: GPU (kernel): 0.13402 ms, GPU (total): 0.56768 ms, CPU: 49.24989 ms
+./resources/input/image3.jpg, Run #16: GPU (kernel): 0.13299 ms, GPU (total): 0.58227 ms, CPU: 47.36492 ms
+./resources/input/image3.jpg, Run #17: GPU (kernel): 0.12822 ms, GPU (total): 0.82742 ms, CPU: 46.92582 ms
+./resources/input/image3.jpg, Run #18: GPU (kernel): 0.12992 ms, GPU (total): 0.58547 ms, CPU: 47.62334 ms
+./resources/input/image3.jpg, Run #19: GPU (kernel): 0.12874 ms, GPU (total): 1.07101 ms, CPU: 42.78969 ms
+./resources/input/image3.jpg, Run #20: GPU (kernel): 0.13360 ms, GPU (total): 0.63568 ms, CPU: 47.37756 ms
+-------------------------------- SUMMARY FOR ./resources/input/image3.jpg --------------------------------
+Image size: 1500 x 1000 (1500000 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.131104 ms, GPU total: 0.656649 ms
+CPU: 47.5783 ms
+SPEEDUPS:
+CPU vs GPU total: 72.4562 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image4.jpg, Run #1: GPU (kernel): 0.22384 ms, GPU (total): 0.95805 ms, CPU: 90.63643 ms
+./resources/input/image4.jpg, Run #2: GPU (kernel): 0.22330 ms, GPU (total): 1.00051 ms, CPU: 86.63285 ms
+./resources/input/image4.jpg, Run #3: GPU (kernel): 0.22954 ms, GPU (total): 1.00038 ms, CPU: 84.82349 ms
+./resources/input/image4.jpg, Run #4: GPU (kernel): 0.22992 ms, GPU (total): 1.02301 ms, CPU: 86.35981 ms
+./resources/input/image4.jpg, Run #5: GPU (kernel): 0.22682 ms, GPU (total): 1.26221 ms, CPU: 86.36647 ms
+./resources/input/image4.jpg, Run #6: GPU (kernel): 0.22474 ms, GPU (total): 1.10618 ms, CPU: 95.98249 ms
+./resources/input/image4.jpg, Run #7: GPU (kernel): 0.22768 ms, GPU (total): 0.87219 ms, CPU: 90.45450 ms
+./resources/input/image4.jpg, Run #8: GPU (kernel): 0.22301 ms, GPU (total): 1.06579 ms, CPU: 92.11333 ms
+./resources/input/image4.jpg, Run #9: GPU (kernel): 0.22262 ms, GPU (total): 0.96288 ms, CPU: 86.56202 ms
+./resources/input/image4.jpg, Run #10: GPU (kernel): 0.22963 ms, GPU (total): 0.95978 ms, CPU: 86.50716 ms
+./resources/input/image4.jpg, Run #11: GPU (kernel): 0.22474 ms, GPU (total): 0.95805 ms, CPU: 86.50231 ms
+./resources/input/image4.jpg, Run #12: GPU (kernel): 0.22787 ms, GPU (total): 0.96406 ms, CPU: 86.63566 ms
+./resources/input/image4.jpg, Run #13: GPU (kernel): 0.22528 ms, GPU (total): 0.94790 ms, CPU: 86.46823 ms
+./resources/input/image4.jpg, Run #14: GPU (kernel): 0.22768 ms, GPU (total): 0.95549 ms, CPU: 86.43952 ms
+./resources/input/image4.jpg, Run #15: GPU (kernel): 0.22742 ms, GPU (total): 0.95578 ms, CPU: 86.29494 ms
+./resources/input/image4.jpg, Run #16: GPU (kernel): 0.22806 ms, GPU (total): 1.29766 ms, CPU: 86.49914 ms
+./resources/input/image4.jpg, Run #17: GPU (kernel): 0.23011 ms, GPU (total): 0.96288 ms, CPU: 86.28342 ms
+./resources/input/image4.jpg, Run #18: GPU (kernel): 0.22621 ms, GPU (total): 0.97491 ms, CPU: 86.39379 ms
+./resources/input/image4.jpg, Run #19: GPU (kernel): 0.22723 ms, GPU (total): 0.96186 ms, CPU: 86.20156 ms
+./resources/input/image4.jpg, Run #20: GPU (kernel): 0.22314 ms, GPU (total): 1.00890 ms, CPU: 86.53405 ms
+-------------------------------- SUMMARY FOR ./resources/input/image4.jpg --------------------------------
+Image size: 1920 x 1440 (2764800 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.226442 ms, GPU total: 1.00992 ms
+CPU: 87.5346 ms
+SPEEDUPS:
+CPU vs GPU total: 86.6747 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image5.jpg, Run #1: GPU (kernel): 0.19290 ms, GPU (total): 0.84806 ms, CPU: 74.35972 ms
+./resources/input/image5.jpg, Run #2: GPU (kernel): 0.20032 ms, GPU (total): 0.87808 ms, CPU: 73.80954 ms
+./resources/input/image5.jpg, Run #3: GPU (kernel): 0.19978 ms, GPU (total): 0.85389 ms, CPU: 65.33400 ms
+./resources/input/image5.jpg, Run #4: GPU (kernel): 0.19632 ms, GPU (total): 0.86563 ms, CPU: 74.23862 ms
+./resources/input/image5.jpg, Run #5: GPU (kernel): 0.19286 ms, GPU (total): 0.97450 ms, CPU: 74.76128 ms
+./resources/input/image5.jpg, Run #6: GPU (kernel): 0.20048 ms, GPU (total): 0.85446 ms, CPU: 64.29035 ms
+./resources/input/image5.jpg, Run #7: GPU (kernel): 0.19283 ms, GPU (total): 0.86602 ms, CPU: 74.66436 ms
+./resources/input/image5.jpg, Run #8: GPU (kernel): 0.19488 ms, GPU (total): 0.86240 ms, CPU: 83.26127 ms
+./resources/input/image5.jpg, Run #9: GPU (kernel): 0.19530 ms, GPU (total): 0.91811 ms, CPU: 65.07684 ms
+./resources/input/image5.jpg, Run #10: GPU (kernel): 0.19280 ms, GPU (total): 0.98227 ms, CPU: 87.87313 ms
+./resources/input/image5.jpg, Run #11: GPU (kernel): 0.19763 ms, GPU (total): 0.87933 ms, CPU: 78.02858 ms
+./resources/input/image5.jpg, Run #12: GPU (kernel): 0.19757 ms, GPU (total): 0.88266 ms, CPU: 82.06189 ms
+./resources/input/image5.jpg, Run #13: GPU (kernel): 0.19501 ms, GPU (total): 0.96464 ms, CPU: 85.49773 ms
+./resources/input/image5.jpg, Run #14: GPU (kernel): 0.19888 ms, GPU (total): 0.87347 ms, CPU: 83.64508 ms
+./resources/input/image5.jpg, Run #15: GPU (kernel): 0.19603 ms, GPU (total): 0.92051 ms, CPU: 76.23508 ms
+./resources/input/image5.jpg, Run #16: GPU (kernel): 0.19267 ms, GPU (total): 0.91485 ms, CPU: 65.69649 ms
+./resources/input/image5.jpg, Run #17: GPU (kernel): 0.19280 ms, GPU (total): 0.89498 ms, CPU: 77.11314 ms
+./resources/input/image5.jpg, Run #18: GPU (kernel): 0.19539 ms, GPU (total): 0.86989 ms, CPU: 74.29539 ms
+./resources/input/image5.jpg, Run #19: GPU (kernel): 0.20051 ms, GPU (total): 0.94746 ms, CPU: 62.85920 ms
+./resources/input/image5.jpg, Run #20: GPU (kernel): 0.19251 ms, GPU (total): 0.86893 ms, CPU: 83.46357 ms
+-------------------------------- SUMMARY FOR ./resources/input/image5.jpg --------------------------------
+Image size: 1243 x 1920 (2386560 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.195874 ms, GPU total: 0.896007 ms
+CPU: 75.3283 ms
+SPEEDUPS:
+CPU vs GPU total: 84.0711 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image6.jpg, Run #1: GPU (kernel): 0.66003 ms, GPU (total): 2.99373 ms, CPU: 248.52979 ms
+./resources/input/image6.jpg, Run #2: GPU (kernel): 0.66646 ms, GPU (total): 2.75517 ms, CPU: 152.28920 ms
+./resources/input/image6.jpg, Run #3: GPU (kernel): 0.66346 ms, GPU (total): 2.79238 ms, CPU: 262.39788 ms
+./resources/input/image6.jpg, Run #4: GPU (kernel): 0.66848 ms, GPU (total): 3.12112 ms, CPU: 153.27267 ms
+./resources/input/image6.jpg, Run #5: GPU (kernel): 0.66509 ms, GPU (total): 3.11382 ms, CPU: 152.29580 ms
+./resources/input/image6.jpg, Run #6: GPU (kernel): 0.66131 ms, GPU (total): 2.77142 ms, CPU: 265.81587 ms
+./resources/input/image6.jpg, Run #7: GPU (kernel): 0.66563 ms, GPU (total): 2.42592 ms, CPU: 160.46236 ms
+./resources/input/image6.jpg, Run #8: GPU (kernel): 0.74518 ms, GPU (total): 2.57264 ms, CPU: 190.87512 ms
+./resources/input/image6.jpg, Run #9: GPU (kernel): 0.66413 ms, GPU (total): 2.60019 ms, CPU: 199.49389 ms
+./resources/input/image6.jpg, Run #10: GPU (kernel): 0.66870 ms, GPU (total): 2.72608 ms, CPU: 258.38051 ms
+./resources/input/image6.jpg, Run #11: GPU (kernel): 0.66077 ms, GPU (total): 2.90278 ms, CPU: 152.53810 ms
+./resources/input/image6.jpg, Run #12: GPU (kernel): 0.66704 ms, GPU (total): 2.23411 ms, CPU: 152.33063 ms
+./resources/input/image6.jpg, Run #13: GPU (kernel): 0.74378 ms, GPU (total): 2.90762 ms, CPU: 266.20633 ms
+./resources/input/image6.jpg, Run #14: GPU (kernel): 0.66384 ms, GPU (total): 2.35504 ms, CPU: 154.05384 ms
+./resources/input/image6.jpg, Run #15: GPU (kernel): 0.66640 ms, GPU (total): 2.63149 ms, CPU: 156.68588 ms
+./resources/input/image6.jpg, Run #16: GPU (kernel): 0.66816 ms, GPU (total): 2.66461 ms, CPU: 266.29229 ms
+./resources/input/image6.jpg, Run #17: GPU (kernel): 0.66730 ms, GPU (total): 2.48026 ms, CPU: 167.53581 ms
+./resources/input/image6.jpg, Run #18: GPU (kernel): 0.66749 ms, GPU (total): 2.58019 ms, CPU: 165.41447 ms
+./resources/input/image6.jpg, Run #19: GPU (kernel): 0.66502 ms, GPU (total): 2.73722 ms, CPU: 306.09997 ms
+./resources/input/image6.jpg, Run #20: GPU (kernel): 0.66723 ms, GPU (total): 2.82643 ms, CPU: 175.41455 ms
+-------------------------------- SUMMARY FOR ./resources/input/image6.jpg --------------------------------
+Image size: 3614 x 2409 (8706126 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 0.673275 ms, GPU total: 2.70961 ms
+CPU: 200.319 ms
+SPEEDUPS:
+CPU vs GPU total: 73.9290 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image7.jpg, Run #1: GPU (kernel): 1.31258 ms, GPU (total): 4.58390 ms, CPU: 304.82205 ms
+./resources/input/image7.jpg, Run #2: GPU (kernel): 1.31677 ms, GPU (total): 4.67325 ms, CPU: 305.05815 ms
+./resources/input/image7.jpg, Run #3: GPU (kernel): 1.31456 ms, GPU (total): 4.55734 ms, CPU: 304.42058 ms
+./resources/input/image7.jpg, Run #4: GPU (kernel): 1.31104 ms, GPU (total): 4.54557 ms, CPU: 304.67384 ms
+./resources/input/image7.jpg, Run #5: GPU (kernel): 1.31091 ms, GPU (total): 4.84362 ms, CPU: 304.49299 ms
+./resources/input/image7.jpg, Run #6: GPU (kernel): 1.31949 ms, GPU (total): 4.54170 ms, CPU: 305.04081 ms
+./resources/input/image7.jpg, Run #7: GPU (kernel): 1.31936 ms, GPU (total): 4.70483 ms, CPU: 308.41142 ms
+./resources/input/image7.jpg, Run #8: GPU (kernel): 1.32141 ms, GPU (total): 4.85270 ms, CPU: 305.16267 ms
+./resources/input/image7.jpg, Run #9: GPU (kernel): 1.31565 ms, GPU (total): 4.78550 ms, CPU: 304.62573 ms
+./resources/input/image7.jpg, Run #10: GPU (kernel): 1.31782 ms, GPU (total): 4.80576 ms, CPU: 305.00668 ms
+./resources/input/image7.jpg, Run #11: GPU (kernel): 1.31894 ms, GPU (total): 4.40960 ms, CPU: 304.83925 ms
+./resources/input/image7.jpg, Run #12: GPU (kernel): 1.31974 ms, GPU (total): 4.64707 ms, CPU: 305.05995 ms
+./resources/input/image7.jpg, Run #13: GPU (kernel): 1.31850 ms, GPU (total): 4.75366 ms, CPU: 306.29370 ms
+./resources/input/image7.jpg, Run #14: GPU (kernel): 1.31258 ms, GPU (total): 4.54083 ms, CPU: 304.98711 ms
+./resources/input/image7.jpg, Run #15: GPU (kernel): 1.31638 ms, GPU (total): 4.64352 ms, CPU: 304.68355 ms
+./resources/input/image7.jpg, Run #16: GPU (kernel): 1.31901 ms, GPU (total): 4.68163 ms, CPU: 305.14290 ms
+./resources/input/image7.jpg, Run #17: GPU (kernel): 1.32016 ms, GPU (total): 4.60781 ms, CPU: 304.86320 ms
+./resources/input/image7.jpg, Run #18: GPU (kernel): 1.31894 ms, GPU (total): 4.61370 ms, CPU: 304.68324 ms
+./resources/input/image7.jpg, Run #19: GPU (kernel): 1.31648 ms, GPU (total): 4.67850 ms, CPU: 310.72950 ms
+./resources/input/image7.jpg, Run #20: GPU (kernel): 1.31677 ms, GPU (total): 4.58701 ms, CPU: 304.71691 ms
+-------------------------------- SUMMARY FOR ./resources/input/image7.jpg --------------------------------
+Image size: 4961 x 3508 (17403188 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 1.31685 ms, GPU total: 4.65287 ms
+CPU: 305.386 ms
+SPEEDUPS:
+CPU vs GPU total: 65.6338 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image8.jpg, Run #1: GPU (kernel): 1.81386 ms, GPU (total): 5.98269 ms, CPU: 419.44946 ms
+./resources/input/image8.jpg, Run #2: GPU (kernel): 1.81069 ms, GPU (total): 5.98816 ms, CPU: 420.80273 ms
+./resources/input/image8.jpg, Run #3: GPU (kernel): 1.81552 ms, GPU (total): 6.00442 ms, CPU: 419.89277 ms
+./resources/input/image8.jpg, Run #4: GPU (kernel): 1.80237 ms, GPU (total): 5.97590 ms, CPU: 419.81188 ms
+./resources/input/image8.jpg, Run #5: GPU (kernel): 1.81142 ms, GPU (total): 6.01232 ms, CPU: 419.22188 ms
+./resources/input/image8.jpg, Run #6: GPU (kernel): 1.80419 ms, GPU (total): 6.03418 ms, CPU: 419.71780 ms
+./resources/input/image8.jpg, Run #7: GPU (kernel): 1.80390 ms, GPU (total): 5.99853 ms, CPU: 419.76040 ms
+./resources/input/image8.jpg, Run #8: GPU (kernel): 1.80630 ms, GPU (total): 6.04893 ms, CPU: 420.08859 ms
+./resources/input/image8.jpg, Run #9: GPU (kernel): 1.80550 ms, GPU (total): 6.01683 ms, CPU: 419.87139 ms
+./resources/input/image8.jpg, Run #10: GPU (kernel): 1.80589 ms, GPU (total): 6.10656 ms, CPU: 420.00876 ms
+./resources/input/image8.jpg, Run #11: GPU (kernel): 1.80336 ms, GPU (total): 6.04266 ms, CPU: 419.74269 ms
+./resources/input/image8.jpg, Run #12: GPU (kernel): 1.80115 ms, GPU (total): 6.02944 ms, CPU: 419.85315 ms
+./resources/input/image8.jpg, Run #13: GPU (kernel): 1.80851 ms, GPU (total): 6.08112 ms, CPU: 420.32709 ms
+./resources/input/image8.jpg, Run #14: GPU (kernel): 1.81184 ms, GPU (total): 5.99149 ms, CPU: 419.73563 ms
+./resources/input/image8.jpg, Run #15: GPU (kernel): 1.79955 ms, GPU (total): 5.99805 ms, CPU: 421.07366 ms
+./resources/input/image8.jpg, Run #16: GPU (kernel): 1.80413 ms, GPU (total): 5.99994 ms, CPU: 419.65904 ms
+./resources/input/image8.jpg, Run #17: GPU (kernel): 1.80694 ms, GPU (total): 6.06000 ms, CPU: 419.76672 ms
+./resources/input/image8.jpg, Run #18: GPU (kernel): 1.80470 ms, GPU (total): 6.00406 ms, CPU: 419.66039 ms
+./resources/input/image8.jpg, Run #19: GPU (kernel): 1.80061 ms, GPU (total): 6.17155 ms, CPU: 419.99115 ms
+./resources/input/image8.jpg, Run #20: GPU (kernel): 1.80176 ms, GPU (total): 6.02915 ms, CPU: 419.73881 ms
+-------------------------------- SUMMARY FOR ./resources/input/image8.jpg --------------------------------
+Image size: 6000 x 4000 (24000000 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 1.80611 ms, GPU total: 6.0288 ms
+CPU: 419.909 ms
+SPEEDUPS:
+CPU vs GPU total: 69.6505 x faster (including data transfers)
+--------------------------------------------------------------------------------
+
+./resources/input/image9.jpg, Run #1: GPU (kernel): 1.81677 ms, GPU (total): 6.01760 ms, CPU: 428.12523 ms
+./resources/input/image9.jpg, Run #2: GPU (kernel): 1.80845 ms, GPU (total): 6.07709 ms, CPU: 446.11748 ms
+./resources/input/image9.jpg, Run #3: GPU (kernel): 1.81376 ms, GPU (total): 6.02106 ms, CPU: 428.49710 ms
+./resources/input/image9.jpg, Run #4: GPU (kernel): 1.80589 ms, GPU (total): 6.35155 ms, CPU: 576.59155 ms
+./resources/input/image9.jpg, Run #5: GPU (kernel): 1.80880 ms, GPU (total): 5.98918 ms, CPU: 428.06366 ms
+./resources/input/image9.jpg, Run #6: GPU (kernel): 1.80941 ms, GPU (total): 6.05658 ms, CPU: 442.08439 ms
+./resources/input/image9.jpg, Run #7: GPU (kernel): 1.81382 ms, GPU (total): 6.01181 ms, CPU: 427.92149 ms
+./resources/input/image9.jpg, Run #8: GPU (kernel): 1.81232 ms, GPU (total): 6.00634 ms, CPU: 428.27649 ms
+./resources/input/image9.jpg, Run #9: GPU (kernel): 1.81309 ms, GPU (total): 6.08106 ms, CPU: 451.01003 ms
+./resources/input/image9.jpg, Run #10: GPU (kernel): 1.81139 ms, GPU (total): 5.99680 ms, CPU: 428.03297 ms
+./resources/input/image9.jpg, Run #11: GPU (kernel): 1.81456 ms, GPU (total): 5.99344 ms, CPU: 428.04058 ms
+./resources/input/image9.jpg, Run #12: GPU (kernel): 1.80435 ms, GPU (total): 6.33235 ms, CPU: 534.90761 ms
+./resources/input/image9.jpg, Run #13: GPU (kernel): 1.81245 ms, GPU (total): 5.98957 ms, CPU: 429.15371 ms
+./resources/input/image9.jpg, Run #14: GPU (kernel): 1.80829 ms, GPU (total): 6.13827 ms, CPU: 475.44946 ms
+./resources/input/image9.jpg, Run #15: GPU (kernel): 1.81840 ms, GPU (total): 5.98918 ms, CPU: 427.86435 ms
+./resources/input/image9.jpg, Run #16: GPU (kernel): 1.80966 ms, GPU (total): 6.35622 ms, CPU: 587.63900 ms
+./resources/input/image9.jpg, Run #17: GPU (kernel): 1.80899 ms, GPU (total): 6.36211 ms, CPU: 579.10305 ms
+./resources/input/image9.jpg, Run #18: GPU (kernel): 1.81693 ms, GPU (total): 5.98922 ms, CPU: 428.02221 ms
+./resources/input/image9.jpg, Run #19: GPU (kernel): 1.81366 ms, GPU (total): 6.04074 ms, CPU: 427.24183 ms
+./resources/input/image9.jpg, Run #20: GPU (kernel): 1.81328 ms, GPU (total): 6.00422 ms, CPU: 428.46764 ms
+-------------------------------- SUMMARY FOR ./resources/input/image9.jpg --------------------------------
+Image size: 6000 x 4000 (24000000 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+GPU kernel: 1.81171 ms, GPU total: 6.09022 ms
+CPU: 461.53 ms
+SPEEDUPS:
+CPU vs GPU total: 75.7821 x faster (including data transfers)
+--------------------------------------------------------------------------------
+

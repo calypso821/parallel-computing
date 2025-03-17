@@ -3,12 +3,8 @@
 
 #include <cuda_runtime.h>
 #include <cuda.h>
-#include "helper_cuda.h"
-
-#define STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image.h"
-#include "stb_image_write.h"
+#include "cuda_config.h"
+#include "stb_config.h"
 
 #define COLOR_CHANNELS 4
 #define BLOCK_SIZE 16
@@ -60,7 +56,7 @@ int main(int argc, char *argv[]){
 
     if (argc < 2)
     {
-        printf("USAGE: prog input_image output_image\n");
+        printf("USAGE: prog input_image [output_image]\n");
         exit(EXIT_FAILURE);
     }
 
@@ -118,16 +114,16 @@ int main(int argc, char *argv[]){
     // Input image
     checkCudaErrors(
         cudaMemcpy((void *)d_imageIn,
-                    (void *)h_imageIn,
-                    datasize,
-                    cudaMemcpyHostToDevice));
+                (void *)h_imageIn,
+                datasize,
+                cudaMemcpyHostToDevice));
 
     // Start recording (kernel)
     cudaEventRecord(kernel_start);
 
     // Run kernel
     sharpen_img<<<numOfBlocks, threadsInBlock>>>(d_imageIn, d_imageOut, width, height, cpp);
-    getLastCudaError("sharpen_img() execution failed\n");
+    getLastCudaError("sharpen() execution failed");
 
     // Stop recording (kernel)
     cudaEventRecord(kernel_end);
@@ -135,9 +131,9 @@ int main(int argc, char *argv[]){
     // Transfer data from GPU to host (ImageOut - sharpen image)
     checkCudaErrors(
         cudaMemcpy((void *)h_imageOut,
-                    (void *)d_imageOut,
-                    datasize,
-                    cudaMemcpyDeviceToHost));
+                (void *)d_imageOut,
+                datasize,
+                cudaMemcpyDeviceToHost));
     
     // Start recording (total time)
     cudaEventRecord(total_end);
@@ -148,7 +144,7 @@ int main(int argc, char *argv[]){
 
     cudaEventElapsedTime(&kernel_time, kernel_start, kernel_end);
     cudaEventElapsedTime(&total_time, total_start, total_end);
-
+    printf("Image size: %d x %d (%d pixels), channels: %d\n", width, height, width * height, COLOR_CHANNELS);
     printf("Kernel execution time: %.5f milliseconds\n", kernel_time);
     // Total = kernel + data transfer
     printf("Total execution time: %.5f milliseconds\n", total_time);

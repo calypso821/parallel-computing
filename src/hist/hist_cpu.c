@@ -116,15 +116,22 @@ void CalculateHistogram(unsigned char* image, int width, int height, unsigned in
 }
 
 
+int main(int argc, char *argv[]){
 
+    if (argc < 2)
+    {
+        printf("USAGE: prog input_image output_image\n");
+        exit(EXIT_FAILURE);
+    }
 
-int main(){
+    char szImage_in_name[255];
+    snprintf(szImage_in_name, 255, "%s", argv[1]);
 
     // Read image from file
     int width, height, cpp;
 
     // read only DESIRED_NCHANNELS channels from the input image:
-    unsigned char *imageIn = stbi_load("resources/kolesar-neq.jpg", &width, &height, &cpp, DESIRED_NCHANNELS);
+    unsigned char *imageIn = stbi_load(szImage_in_name, &width, &height, &cpp, DESIRED_NCHANNELS);
     if(imageIn == NULL) {
         printf("Error in loading the image\n");
         return 1;
@@ -154,28 +161,45 @@ int main(){
     clock_gettime(CLOCK_REALTIME, &timeEnd);
     double cpu_elapsedTime = ((timeEnd.tv_sec - timeStart.tv_sec) + (timeEnd.tv_nsec - timeStart.tv_nsec) / 1e9) * 1000;    // in miliseconds 
 
-
-    
-
-    /***************************************************************
-    Izpis rezultatov in slik
-    ****************************************************************/
-
-
     // Izračun histograma nove slike:
     CalculateHistogram(imageOut, width, height, new_histogram);
 
-    printf("Beam       Hist_CPU      CDF_CPU      newHist\n");
-    for (size_t i = 0; i < GRAYLEVELS; i++)
-    {
-        printf("%3ld      %6d        %6d         %6d \n", i, histogram_CPU[i], CDF_CPU[i], new_histogram[i]);
+    // printf("Beam       Hist_CPU      CDF_CPU      newHist\n");
+    // for (size_t i = 0; i < GRAYLEVELS; i++)
+    // {
+    //     printf("%3ld      %6d        %6d         %6d \n", i, histogram_CPU[i], CDF_CPU[i], new_histogram[i]);
+    // }
+
+    printf("Image size: %d x %d\n", width, height);
+    printf("CPU execution time: %.5f milliseconds\n", cpu_elapsedTime);
+
+    // Write output image to file
+    if (argc == 3) {
+        char szImage_out_name[255];
+        snprintf(szImage_out_name, 255, "%s", argv[2]);
+
+        // Retrieve output file type
+        char szImage_out_name_temp[255];
+        strncpy(szImage_out_name_temp, szImage_out_name, 255);
+
+        char *token = strtok(szImage_out_name_temp, ".");
+        char *FileType = NULL;
+        while (token != NULL)
+        {
+            FileType = token;
+            token = strtok(NULL, ".");
+        }
+
+        // Write output image to file
+        if (!strcmp(FileType, "png"))
+            stbi_write_png(szImage_out_name, width, height, DESIRED_NCHANNELS, imageOut, width);
+        else if (!strcmp(FileType, "jpg"))
+            stbi_write_jpg(szImage_out_name, width, height, DESIRED_NCHANNELS, imageOut, 100);
+        else if (!strcmp(FileType, "bmp"))
+            stbi_write_bmp(szImage_out_name, width, height, DESIRED_NCHANNELS, imageOut);
+        else
+            printf("Error: Unknown image format %s! Only png, bmp, or bmp supported.\n", FileType);
     }
-
-    printf("\n\nSlika velikosti %d x %d\n", width, height);
-    printf("CPU time: %.4f ms\n", cpu_elapsedTime);
-
-
-    stbi_write_jpg("resources/slikaCPU.jpg", width, height, DESIRED_NCHANNELS, imageOut, 100);
 
     
 

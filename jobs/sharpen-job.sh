@@ -7,10 +7,11 @@
 #SBATCH --time=01:00:00
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
+#SBATCH --nodelist=wn[212]
 
 
 ###############################################################################################################
-prg_directory="image_proc/"
+prg_directory="sharpen_filter/"
 gpu_program="${prg_directory}sharpen_filter.cu" # GPU program source file
 cpu_seq_program="${prg_directory}sharpen_filter_seq.c" # CPU program (sequential) source file 
 cpu_par_program="${prg_directory}sharpen_filter_par.c" # CPU program (parallel) source file 
@@ -31,12 +32,12 @@ module load CUDA
 echo "CUDA module loaded"
 
 echo "Compiling GPU program..."
-srun --partition=gpu nvcc $gpu_program -o sharpen_cuda.out -diag-suppress 55
+srun --partition=gpu nvcc -Iinclude/ $gpu_program -o sharpen_cuda.out -diag-suppress 55
 echo "GPU program compiled"
 
 echo "Compiling CPU program..."
-srun gcc $cpu_seq_program -o sharpen_cpu_seq.out -lm
-srun gcc $cpu_par_program -o sharpen_cpu_par.out -lm
+srun gcc -Iinclude/ $cpu_seq_program -o sharpen_cpu_seq.out -lm
+srun gcc -Iinclude/ $cpu_par_program -o sharpen_cpu_par.out -lm
 echo "CPU program compiled"
 
 # Loop through all images in the image dir
@@ -81,60 +82,45 @@ for image in "$image_dir"/*.{jpg,jpeg,png,bmp}; do
     done
 
     # Report
-    # Sort times in ascending order
-    sorted_gpu_kernel=($(printf '%s\n' "${gpu_kernel_times[@]}" | sort -n))
-    sorted_gpu_total=($(printf '%s\n' "${gpu_total_times[@]}" | sort -n))
-    sorted_cpu_seq=($(printf '%s\n' "${cpu_seq_times[@]}" | sort -n))
-    sorted_cpu_par=($(printf '%s\n' "${cpu_par_times[@]}" | sort -n))
+    # Calculate averages of ALL times
+    gpu_kernel_avg=$(echo "${gpu_kernel_times[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
+    gpu_total_avg=$(echo "${gpu_total_times[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
+    cpu_seq_avg=$(echo "${cpu_seq_times[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
+    cpu_par_avg=$(echo "${cpu_par_times[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
 
-    # Calculate how many values represent 20% (at least 1)
-    num_runs=${#gpu_kernel_times[@]}
-    best_count=$(echo "($num_runs * 0.2 + 0.5) / 1" | bc)
-    best_count=$((best_count > 0 ? best_count : 1))
-
-    # Take the best 20% and calculate their average
-    best_gpu_kernel=("${sorted_gpu_kernel[@]:0:$best_count}")
-    best_gpu_total=("${sorted_gpu_total[@]:0:$best_count}")
-    best_cpu_seq=("${sorted_cpu_seq[@]:0:$best_count}")
-    best_cpu_par=("${sorted_cpu_par[@]:0:$best_count}")
-
-    # Calculate averages of the best 20%
-    gpu_kernel_best=$(echo "${best_gpu_kernel[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
-    gpu_total_best=$(echo "${best_gpu_total[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
-    cpu_seq_best=$(echo "${best_cpu_seq[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
-    cpu_par_best=$(echo "${best_cpu_par[@]}" | awk '{sum=0; for(i=1;i<=NF;i++) sum+=$i} END {if (NF>0) print sum/NF; else print 0}')
-
-    # Calculate speedups based on best 20% averages
+    # Calculate speedups based on averages of all runs
     # Using GPU total time for CPU vs GPU comparisons
-    if (( $(echo "$gpu_total_best > 0" | bc -l) )); then
-        seq_vs_gpu=$(echo "scale=4; $cpu_seq_best / $gpu_total_best" | bc -l)
-        par_vs_gpu=$(echo "scale=4; $cpu_par_best / $gpu_total_best" | bc -l)
+    if (( $(echo "$gpu_total_avg > 0" | bc -l) )); then
+        seq_vs_gpu=$(echo "scale=4; $cpu_seq_avg / $gpu_total_avg" | bc -l)
+        par_vs_gpu=$(echo "scale=4; $cpu_par_avg / $gpu_total_avg" | bc -l)
     else
         seq_vs_gpu="N/A"
         par_vs_gpu="N/A"
     fi
 
     # Calculate seq vs par speedup
-    if (( $(echo "$cpu_par_best > 0" | bc -l) )); then
-        seq_vs_par=$(echo "scale=4; $cpu_seq_best / $cpu_par_best" | bc -l)
+    if (( $(echo "$cpu_par_avg > 0" | bc -l) )); then
+        seq_vs_par=$(echo "scale=4; $cpu_seq_avg / $cpu_par_avg" | bc -l)
     else
         seq_vs_par="N/A"
     fi
 
+    # Extract the full image dimensions line from GPU output
+    image_info=$(echo "$gpu_output" | grep "Image size:")
+
     # Write the summary results to the output file
     echo "-------------------------------- SUMMARY FOR $image --------------------------------" >> $output_file
-    echo "AVERAGE TIMES (BEST 20%):" >> $output_file
-    echo "GPU kernel: $gpu_kernel_best ms, GPU total: $gpu_total_best ms" >> $output_file
-    echo "CPU seq: $cpu_seq_best ms, CPU par: $cpu_par_best ms" >> $output_file
+    echo $image_info >> $output_file
+    echo "AVERAGE TIMES (ALL RUNS):" >> $output_file
+    echo "GPU kernel: $gpu_kernel_avg ms, GPU total: $gpu_total_avg ms" >> $output_file
+    echo "CPU seq: $cpu_seq_avg ms, CPU par (4 threads): $cpu_par_avg ms" >> $output_file
     echo "SPEEDUPS:" >> $output_file
     echo "CPU seq vs GPU total: $seq_vs_gpu x (including data transfers)" >> $output_file
     echo "CPU par vs GPU total: $par_vs_gpu x (including data transfers)" >> $output_file
     echo "CPU seq vs CPU par: $seq_vs_par x" >> $output_file
     echo "--------------------------------------------------------------------------------" >> $output_file
-    echo "" >> $output_file  # add an empty line after each image's results
+    echo "" >> $output_file # add an empty line after each image's results
     echo "Tests for $image completed"
-
-
 done
 
 echo "All tests completed"

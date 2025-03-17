@@ -1,0 +1,320 @@
+./resources/input/image0.jpg, Run #1: Hist (naive): 3.76282 ms, Hist (local mem): 0.03933 ms, CDF (naive): 0.02016 ms, CDF (blelloch): 0.02352 ms
+./resources/input/image0.jpg, Run #2: Hist (naive): 186.61908 ms, Hist (local mem): 0.04266 ms, CDF (naive): 0.02218 ms, CDF (blelloch): 0.02486 ms
+./resources/input/image0.jpg, Run #3: Hist (naive): 16.24726 ms, Hist (local mem): 0.04006 ms, CDF (naive): 0.02067 ms, CDF (blelloch): 0.02259 ms
+./resources/input/image0.jpg, Run #4: Hist (naive): 488.40616 ms, Hist (local mem): 0.04003 ms, CDF (naive): 0.02042 ms, CDF (blelloch): 0.02253 ms
+./resources/input/image0.jpg, Run #5: Hist (naive): 10.49155 ms, Hist (local mem): 0.03910 ms, CDF (naive): 0.01981 ms, CDF (blelloch): 0.02221 ms
+./resources/input/image0.jpg, Run #6: Hist (naive): 420.69296 ms, Hist (local mem): 0.04102 ms, CDF (naive): 0.02550 ms, CDF (blelloch): 0.02368 ms
+./resources/input/image0.jpg, Run #7: Hist (naive): 6.97008 ms, Hist (local mem): 0.03981 ms, CDF (naive): 0.02048 ms, CDF (blelloch): 0.02365 ms
+./resources/input/image0.jpg, Run #8: Hist (naive): 388.62274 ms, Hist (local mem): 0.06570 ms, CDF (naive): 0.01946 ms, CDF (blelloch): 0.02208 ms
+./resources/input/image0.jpg, Run #9: Hist (naive): 11.81018 ms, Hist (local mem): 0.04006 ms, CDF (naive): 0.02086 ms, CDF (blelloch): 0.02240 ms
+./resources/input/image0.jpg, Run #10: Hist (naive): 475.91144 ms, Hist (local mem): 0.04518 ms, CDF (naive): 0.02320 ms, CDF (blelloch): 0.02579 ms
+./resources/input/image0.jpg, Run #11: Hist (naive): 17.06221 ms, Hist (local mem): 0.04666 ms, CDF (naive): 0.02122 ms, CDF (blelloch): 0.02390 ms
+./resources/input/image0.jpg, Run #12: Hist (naive): 423.14264 ms, Hist (local mem): 0.04272 ms, CDF (naive): 0.02320 ms, CDF (blelloch): 0.02566 ms
+./resources/input/image0.jpg, Run #13: Hist (naive): 15.14125 ms, Hist (local mem): 0.04090 ms, CDF (naive): 0.01978 ms, CDF (blelloch): 0.02253 ms
+./resources/input/image0.jpg, Run #14: Hist (naive): 490.82669 ms, Hist (local mem): 0.04253 ms, CDF (naive): 0.02026 ms, CDF (blelloch): 0.02362 ms
+./resources/input/image0.jpg, Run #15: Hist (naive): 7.64653 ms, Hist (local mem): 0.03923 ms, CDF (naive): 0.02074 ms, CDF (blelloch): 0.02208 ms
+./resources/input/image0.jpg, Run #16: Hist (naive): 498.18735 ms, Hist (local mem): 0.04061 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02282 ms
+./resources/input/image0.jpg, Run #17: Hist (naive): 4.37651 ms, Hist (local mem): 0.03920 ms, CDF (naive): 0.02000 ms, CDF (blelloch): 0.02304 ms
+./resources/input/image0.jpg, Run #18: Hist (naive): 482.82462 ms, Hist (local mem): 0.04307 ms, CDF (naive): 0.02054 ms, CDF (blelloch): 0.02282 ms
+./resources/input/image0.jpg, Run #19: Hist (naive): 28.75594 ms, Hist (local mem): 0.04006 ms, CDF (naive): 0.02067 ms, CDF (blelloch): 0.02262 ms
+./resources/input/image0.jpg, Run #20: Hist (naive): 478.58041 ms, Hist (local mem): 0.04122 ms, CDF (naive): 0.02051 ms, CDF (blelloch): 0.02323 ms
+-------------------------------- SUMMARY FOR ./resources/input/image0.jpg --------------------------------
+Image size: 640 x 427 (273280 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 222.804 ms
+Histogram (local mem): 0.0424575 ms
+CDF (naive): 0.021015 ms
+CDF (blelloch): 0.0232815 ms
+SPEEDUPS:
+Histogram naive vs local memory: 5247.6947 x faster
+CDF naive vs Blelloch: .9026 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image1.jpg, Run #1: Hist (naive): 17.47670 ms, Hist (local mem): 0.06646 ms, CDF (naive): 0.02042 ms, CDF (blelloch): 0.02227 ms
+./resources/input/image1.jpg, Run #2: Hist (naive): 399.29193 ms, Hist (local mem): 0.06714 ms, CDF (naive): 0.02032 ms, CDF (blelloch): 0.02442 ms
+./resources/input/image1.jpg, Run #3: Hist (naive): 21.07011 ms, Hist (local mem): 0.06637 ms, CDF (naive): 0.02029 ms, CDF (blelloch): 0.02320 ms
+./resources/input/image1.jpg, Run #4: Hist (naive): 412.44354 ms, Hist (local mem): 0.06906 ms, CDF (naive): 0.02061 ms, CDF (blelloch): 0.02310 ms
+./resources/input/image1.jpg, Run #5: Hist (naive): 35.47539 ms, Hist (local mem): 0.06595 ms, CDF (naive): 0.02109 ms, CDF (blelloch): 0.03766 ms
+./resources/input/image1.jpg, Run #6: Hist (naive): 575.74896 ms, Hist (local mem): 0.06720 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02330 ms
+./resources/input/image1.jpg, Run #7: Hist (naive): 23.20717 ms, Hist (local mem): 0.06592 ms, CDF (naive): 0.03181 ms, CDF (blelloch): 0.02288 ms
+./resources/input/image1.jpg, Run #8: Hist (naive): 458.03867 ms, Hist (local mem): 0.11011 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02355 ms
+./resources/input/image1.jpg, Run #9: Hist (naive): 14.54458 ms, Hist (local mem): 0.06634 ms, CDF (naive): 0.02035 ms, CDF (blelloch): 0.02285 ms
+./resources/input/image1.jpg, Run #10: Hist (naive): 528.18988 ms, Hist (local mem): 0.06870 ms, CDF (naive): 0.02042 ms, CDF (blelloch): 0.02250 ms
+./resources/input/image1.jpg, Run #11: Hist (naive): 9.98038 ms, Hist (local mem): 0.06755 ms, CDF (naive): 0.02058 ms, CDF (blelloch): 0.02269 ms
+./resources/input/image1.jpg, Run #12: Hist (naive): 420.15192 ms, Hist (local mem): 0.06726 ms, CDF (naive): 0.02019 ms, CDF (blelloch): 0.02250 ms
+./resources/input/image1.jpg, Run #13: Hist (naive): 407.98889 ms, Hist (local mem): 0.06800 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02291 ms
+./resources/input/image1.jpg, Run #14: Hist (naive): 11.70854 ms, Hist (local mem): 0.06602 ms, CDF (naive): 0.02003 ms, CDF (blelloch): 0.02282 ms
+./resources/input/image1.jpg, Run #15: Hist (naive): 42.91891 ms, Hist (local mem): 0.06739 ms, CDF (naive): 0.02010 ms, CDF (blelloch): 0.02317 ms
+./resources/input/image1.jpg, Run #16: Hist (naive): 549.84436 ms, Hist (local mem): 0.06822 ms, CDF (naive): 0.02045 ms, CDF (blelloch): 0.02301 ms
+./resources/input/image1.jpg, Run #17: Hist (naive): 19.37757 ms, Hist (local mem): 0.06525 ms, CDF (naive): 0.01904 ms, CDF (blelloch): 0.02150 ms
+./resources/input/image1.jpg, Run #18: Hist (naive): 9.58416 ms, Hist (local mem): 0.06592 ms, CDF (naive): 0.01962 ms, CDF (blelloch): 0.02266 ms
+./resources/input/image1.jpg, Run #19: Hist (naive): 278.13336 ms, Hist (local mem): 0.06768 ms, CDF (naive): 0.01968 ms, CDF (blelloch): 0.02262 ms
+./resources/input/image1.jpg, Run #20: Hist (naive): 11.73914 ms, Hist (local mem): 0.06595 ms, CDF (naive): 0.02096 ms, CDF (blelloch): 0.02250 ms
+-------------------------------- SUMMARY FOR ./resources/input/image1.jpg --------------------------------
+Image size: 1024 x 640 (655360 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 212.346 ms
+Histogram (local mem): 0.0691245 ms
+CDF (naive): 0.020894 ms
+CDF (blelloch): 0.0236055 ms
+SPEEDUPS:
+Histogram naive vs local memory: 3071.9354 x faster
+CDF naive vs Blelloch: .8851 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image2.jpg, Run #1: Hist (naive): 265.36377 ms, Hist (local mem): 0.13290 ms, CDF (naive): 0.02013 ms, CDF (blelloch): 0.02246 ms
+./resources/input/image2.jpg, Run #2: Hist (naive): 9.75891 ms, Hist (local mem): 0.14349 ms, CDF (naive): 0.02106 ms, CDF (blelloch): 0.02333 ms
+./resources/input/image2.jpg, Run #3: Hist (naive): 167.45302 ms, Hist (local mem): 0.13235 ms, CDF (naive): 0.02051 ms, CDF (blelloch): 0.02294 ms
+./resources/input/image2.jpg, Run #4: Hist (naive): 15.43926 ms, Hist (local mem): 0.13318 ms, CDF (naive): 0.02048 ms, CDF (blelloch): 0.02256 ms
+./resources/input/image2.jpg, Run #5: Hist (naive): 263.05774 ms, Hist (local mem): 0.13386 ms, CDF (naive): 0.02016 ms, CDF (blelloch): 0.02291 ms
+./resources/input/image2.jpg, Run #6: Hist (naive): 5.29667 ms, Hist (local mem): 0.13171 ms, CDF (naive): 0.02118 ms, CDF (blelloch): 0.02291 ms
+./resources/input/image2.jpg, Run #7: Hist (naive): 201.49101 ms, Hist (local mem): 0.13434 ms, CDF (naive): 0.02083 ms, CDF (blelloch): 0.02269 ms
+./resources/input/image2.jpg, Run #8: Hist (naive): 4.80928 ms, Hist (local mem): 0.13152 ms, CDF (naive): 0.02051 ms, CDF (blelloch): 0.02294 ms
+./resources/input/image2.jpg, Run #9: Hist (naive): 180.55113 ms, Hist (local mem): 0.13280 ms, CDF (naive): 0.02042 ms, CDF (blelloch): 0.02314 ms
+./resources/input/image2.jpg, Run #10: Hist (naive): 4.88410 ms, Hist (local mem): 0.13158 ms, CDF (naive): 0.01846 ms, CDF (blelloch): 0.02179 ms
+./resources/input/image2.jpg, Run #11: Hist (naive): 135.30646 ms, Hist (local mem): 0.13318 ms, CDF (naive): 0.02029 ms, CDF (blelloch): 0.02237 ms
+./resources/input/image2.jpg, Run #12: Hist (naive): 17.50890 ms, Hist (local mem): 0.13398 ms, CDF (naive): 0.01917 ms, CDF (blelloch): 0.02179 ms
+./resources/input/image2.jpg, Run #13: Hist (naive): 319.72864 ms, Hist (local mem): 0.13462 ms, CDF (naive): 0.02051 ms, CDF (blelloch): 0.02243 ms
+./resources/input/image2.jpg, Run #14: Hist (naive): 5.35613 ms, Hist (local mem): 0.13142 ms, CDF (naive): 0.02058 ms, CDF (blelloch): 0.02269 ms
+./resources/input/image2.jpg, Run #15: Hist (naive): 295.89697 ms, Hist (local mem): 0.13360 ms, CDF (naive): 0.02019 ms, CDF (blelloch): 0.02323 ms
+./resources/input/image2.jpg, Run #16: Hist (naive): 6.22342 ms, Hist (local mem): 0.13334 ms, CDF (naive): 0.02099 ms, CDF (blelloch): 0.02352 ms
+./resources/input/image2.jpg, Run #17: Hist (naive): 172.90471 ms, Hist (local mem): 0.13158 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02272 ms
+./resources/input/image2.jpg, Run #18: Hist (naive): 11.42045 ms, Hist (local mem): 0.13309 ms, CDF (naive): 0.02109 ms, CDF (blelloch): 0.02282 ms
+./resources/input/image2.jpg, Run #19: Hist (naive): 181.50262 ms, Hist (local mem): 0.13270 ms, CDF (naive): 0.02102 ms, CDF (blelloch): 0.02294 ms
+./resources/input/image2.jpg, Run #20: Hist (naive): 28.36739 ms, Hist (local mem): 0.13642 ms, CDF (naive): 0.02138 ms, CDF (blelloch): 0.02301 ms
+-------------------------------- SUMMARY FOR ./resources/input/image2.jpg --------------------------------
+Image size: 1280 x 1280 (1638400 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 114.616 ms
+Histogram (local mem): 0.133583 ms
+CDF (naive): 0.02048 ms
+CDF (blelloch): 0.0227595 ms
+SPEEDUPS:
+Histogram naive vs local memory: 858.0133 x faster
+CDF naive vs Blelloch: .8998 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image3.jpg, Run #1: Hist (naive): 188.69293 ms, Hist (local mem): 0.12102 ms, CDF (naive): 0.02096 ms, CDF (blelloch): 0.02208 ms
+./resources/input/image3.jpg, Run #2: Hist (naive): 4.54880 ms, Hist (local mem): 0.12138 ms, CDF (naive): 0.02022 ms, CDF (blelloch): 0.02250 ms
+./resources/input/image3.jpg, Run #3: Hist (naive): 472.57022 ms, Hist (local mem): 0.12310 ms, CDF (naive): 0.02032 ms, CDF (blelloch): 0.02288 ms
+./resources/input/image3.jpg, Run #4: Hist (naive): 14.38554 ms, Hist (local mem): 0.12272 ms, CDF (naive): 0.02125 ms, CDF (blelloch): 0.02269 ms
+./resources/input/image3.jpg, Run #5: Hist (naive): 360.81277 ms, Hist (local mem): 0.12272 ms, CDF (naive): 0.01987 ms, CDF (blelloch): 0.02256 ms
+./resources/input/image3.jpg, Run #6: Hist (naive): 21.70336 ms, Hist (local mem): 0.12269 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02250 ms
+./resources/input/image3.jpg, Run #7: Hist (naive): 560.22827 ms, Hist (local mem): 0.12416 ms, CDF (naive): 0.02093 ms, CDF (blelloch): 0.02352 ms
+./resources/input/image3.jpg, Run #8: Hist (naive): 12.21411 ms, Hist (local mem): 0.12205 ms, CDF (naive): 0.02022 ms, CDF (blelloch): 0.02230 ms
+./resources/input/image3.jpg, Run #9: Hist (naive): 464.54300 ms, Hist (local mem): 0.12480 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02352 ms
+./resources/input/image3.jpg, Run #10: Hist (naive): 14.81171 ms, Hist (local mem): 0.12138 ms, CDF (naive): 0.01984 ms, CDF (blelloch): 0.02237 ms
+./resources/input/image3.jpg, Run #11: Hist (naive): 289.05511 ms, Hist (local mem): 0.12349 ms, CDF (naive): 0.02080 ms, CDF (blelloch): 0.02323 ms
+./resources/input/image3.jpg, Run #12: Hist (naive): 8.67366 ms, Hist (local mem): 0.12227 ms, CDF (naive): 0.02035 ms, CDF (blelloch): 0.02266 ms
+./resources/input/image3.jpg, Run #13: Hist (naive): 547.65668 ms, Hist (local mem): 0.12506 ms, CDF (naive): 0.02000 ms, CDF (blelloch): 0.02301 ms
+./resources/input/image3.jpg, Run #14: Hist (naive): 33.91331 ms, Hist (local mem): 0.12275 ms, CDF (naive): 0.02061 ms, CDF (blelloch): 0.02256 ms
+./resources/input/image3.jpg, Run #15: Hist (naive): 188.68121 ms, Hist (local mem): 0.12317 ms, CDF (naive): 0.02131 ms, CDF (blelloch): 0.02467 ms
+./resources/input/image3.jpg, Run #16: Hist (naive): 28.41667 ms, Hist (local mem): 0.12445 ms, CDF (naive): 0.01997 ms, CDF (blelloch): 0.02250 ms
+./resources/input/image3.jpg, Run #17: Hist (naive): 471.41446 ms, Hist (local mem): 0.12384 ms, CDF (naive): 0.02000 ms, CDF (blelloch): 0.02288 ms
+./resources/input/image3.jpg, Run #18: Hist (naive): 11.86810 ms, Hist (local mem): 0.12086 ms, CDF (naive): 0.02074 ms, CDF (blelloch): 0.02323 ms
+./resources/input/image3.jpg, Run #19: Hist (naive): 316.07620 ms, Hist (local mem): 0.12342 ms, CDF (naive): 0.02010 ms, CDF (blelloch): 0.02266 ms
+./resources/input/image3.jpg, Run #20: Hist (naive): 9.67766 ms, Hist (local mem): 0.12070 ms, CDF (naive): 0.02102 ms, CDF (blelloch): 0.02256 ms
+-------------------------------- SUMMARY FOR ./resources/input/image3.jpg --------------------------------
+Image size: 1500 x 1000 (1500000 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 200.997 ms
+Histogram (local mem): 0.122801 ms
+CDF (naive): 0.0204895 ms
+CDF (blelloch): 0.022844 ms
+SPEEDUPS:
+Histogram naive vs local memory: 1636.7700 x faster
+CDF naive vs Blelloch: .8969 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image4.jpg, Run #1: Hist (naive): 20.63907 ms, Hist (local mem): 0.21037 ms, CDF (naive): 0.02045 ms, CDF (blelloch): 0.02899 ms
+./resources/input/image4.jpg, Run #2: Hist (naive): 2.64771 ms, Hist (local mem): 0.20707 ms, CDF (naive): 0.01942 ms, CDF (blelloch): 0.02650 ms
+./resources/input/image4.jpg, Run #3: Hist (naive): 278.27795 ms, Hist (local mem): 0.21008 ms, CDF (naive): 0.01939 ms, CDF (blelloch): 0.02781 ms
+./resources/input/image4.jpg, Run #4: Hist (naive): 22.40602 ms, Hist (local mem): 0.20784 ms, CDF (naive): 0.02029 ms, CDF (blelloch): 0.02915 ms
+./resources/input/image4.jpg, Run #5: Hist (naive): 171.10249 ms, Hist (local mem): 0.21629 ms, CDF (naive): 0.02013 ms, CDF (blelloch): 0.02784 ms
+./resources/input/image4.jpg, Run #6: Hist (naive): 26.39357 ms, Hist (local mem): 0.20714 ms, CDF (naive): 0.01990 ms, CDF (blelloch): 0.03459 ms
+./resources/input/image4.jpg, Run #7: Hist (naive): 258.85138 ms, Hist (local mem): 0.21110 ms, CDF (naive): 0.02112 ms, CDF (blelloch): 0.03910 ms
+./resources/input/image4.jpg, Run #8: Hist (naive): 12.50909 ms, Hist (local mem): 0.20758 ms, CDF (naive): 0.02048 ms, CDF (blelloch): 0.02838 ms
+./resources/input/image4.jpg, Run #9: Hist (naive): 13.14880 ms, Hist (local mem): 0.20659 ms, CDF (naive): 0.01955 ms, CDF (blelloch): 0.02602 ms
+./resources/input/image4.jpg, Run #10: Hist (naive): 7.70720 ms, Hist (local mem): 0.20384 ms, CDF (naive): 0.01667 ms, CDF (blelloch): 0.02240 ms
+./resources/input/image4.jpg, Run #11: Hist (naive): 455.97537 ms, Hist (local mem): 0.20995 ms, CDF (naive): 0.02051 ms, CDF (blelloch): 0.03158 ms
+./resources/input/image4.jpg, Run #12: Hist (naive): 6.72963 ms, Hist (local mem): 0.20883 ms, CDF (naive): 0.02032 ms, CDF (blelloch): 0.02890 ms
+./resources/input/image4.jpg, Run #13: Hist (naive): 108.07465 ms, Hist (local mem): 0.20960 ms, CDF (naive): 0.02093 ms, CDF (blelloch): 0.03808 ms
+./resources/input/image4.jpg, Run #14: Hist (naive): 8.51024 ms, Hist (local mem): 0.20694 ms, CDF (naive): 0.01866 ms, CDF (blelloch): 0.02653 ms
+./resources/input/image4.jpg, Run #15: Hist (naive): 217.81302 ms, Hist (local mem): 0.20979 ms, CDF (naive): 0.02314 ms, CDF (blelloch): 0.03235 ms
+./resources/input/image4.jpg, Run #16: Hist (naive): 4.57162 ms, Hist (local mem): 0.20854 ms, CDF (naive): 0.02048 ms, CDF (blelloch): 0.02877 ms
+./resources/input/image4.jpg, Run #17: Hist (naive): 71.12167 ms, Hist (local mem): 0.20752 ms, CDF (naive): 0.01910 ms, CDF (blelloch): 0.02662 ms
+./resources/input/image4.jpg, Run #18: Hist (naive): 44.55459 ms, Hist (local mem): 0.20918 ms, CDF (naive): 0.02029 ms, CDF (blelloch): 0.02253 ms
+./resources/input/image4.jpg, Run #19: Hist (naive): 319.56717 ms, Hist (local mem): 0.21037 ms, CDF (naive): 0.02064 ms, CDF (blelloch): 0.02918 ms
+./resources/input/image4.jpg, Run #20: Hist (naive): 12.78899 ms, Hist (local mem): 0.20950 ms, CDF (naive): 0.02096 ms, CDF (blelloch): 0.02973 ms
+-------------------------------- SUMMARY FOR ./resources/input/image4.jpg --------------------------------
+Image size: 1920 x 1440 (2764800 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 103.17 ms
+Histogram (local mem): 0.208906 ms
+CDF (naive): 0.0201215 ms
+CDF (blelloch): 0.0292525 ms
+SPEEDUPS:
+Histogram naive vs local memory: 493.8584 x faster
+CDF naive vs Blelloch: .6878 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image5.jpg, Run #1: Hist (naive): 172.96701 ms, Hist (local mem): 0.18176 ms, CDF (naive): 0.02038 ms, CDF (blelloch): 0.02326 ms
+./resources/input/image5.jpg, Run #2: Hist (naive): 4.55184 ms, Hist (local mem): 0.18179 ms, CDF (naive): 0.02099 ms, CDF (blelloch): 0.02294 ms
+./resources/input/image5.jpg, Run #3: Hist (naive): 352.04822 ms, Hist (local mem): 0.18314 ms, CDF (naive): 0.01987 ms, CDF (blelloch): 0.02262 ms
+./resources/input/image5.jpg, Run #4: Hist (naive): 14.66720 ms, Hist (local mem): 0.18243 ms, CDF (naive): 0.02032 ms, CDF (blelloch): 0.02304 ms
+./resources/input/image5.jpg, Run #5: Hist (naive): 304.78479 ms, Hist (local mem): 0.18480 ms, CDF (naive): 0.02032 ms, CDF (blelloch): 0.02298 ms
+./resources/input/image5.jpg, Run #6: Hist (naive): 21.03901 ms, Hist (local mem): 0.18224 ms, CDF (naive): 0.02118 ms, CDF (blelloch): 0.02288 ms
+./resources/input/image5.jpg, Run #7: Hist (naive): 188.33130 ms, Hist (local mem): 0.18963 ms, CDF (naive): 0.02122 ms, CDF (blelloch): 0.02368 ms
+./resources/input/image5.jpg, Run #8: Hist (naive): 8.62842 ms, Hist (local mem): 0.18285 ms, CDF (naive): 0.02074 ms, CDF (blelloch): 0.02288 ms
+./resources/input/image5.jpg, Run #9: Hist (naive): 243.27676 ms, Hist (local mem): 0.18288 ms, CDF (naive): 0.02106 ms, CDF (blelloch): 0.02294 ms
+./resources/input/image5.jpg, Run #10: Hist (naive): 6.07245 ms, Hist (local mem): 0.18160 ms, CDF (naive): 0.02077 ms, CDF (blelloch): 0.02304 ms
+./resources/input/image5.jpg, Run #11: Hist (naive): 328.55518 ms, Hist (local mem): 0.18454 ms, CDF (naive): 0.02096 ms, CDF (blelloch): 0.02358 ms
+./resources/input/image5.jpg, Run #12: Hist (naive): 49.50550 ms, Hist (local mem): 0.18749 ms, CDF (naive): 0.02154 ms, CDF (blelloch): 0.02358 ms
+./resources/input/image5.jpg, Run #13: Hist (naive): 212.82214 ms, Hist (local mem): 0.18435 ms, CDF (naive): 0.02144 ms, CDF (blelloch): 0.02368 ms
+./resources/input/image5.jpg, Run #14: Hist (naive): 21.90150 ms, Hist (local mem): 0.18448 ms, CDF (naive): 0.02378 ms, CDF (blelloch): 0.02634 ms
+./resources/input/image5.jpg, Run #15: Hist (naive): 247.21971 ms, Hist (local mem): 0.18413 ms, CDF (naive): 0.02054 ms, CDF (blelloch): 0.02320 ms
+./resources/input/image5.jpg, Run #16: Hist (naive): 2.60912 ms, Hist (local mem): 0.18163 ms, CDF (naive): 0.02019 ms, CDF (blelloch): 0.02256 ms
+./resources/input/image5.jpg, Run #17: Hist (naive): 453.13162 ms, Hist (local mem): 0.18230 ms, CDF (naive): 0.02080 ms, CDF (blelloch): 0.02237 ms
+./resources/input/image5.jpg, Run #18: Hist (naive): 14.87386 ms, Hist (local mem): 0.18144 ms, CDF (naive): 0.02118 ms, CDF (blelloch): 0.02310 ms
+./resources/input/image5.jpg, Run #19: Hist (naive): 296.33688 ms, Hist (local mem): 0.19261 ms, CDF (naive): 0.02054 ms, CDF (blelloch): 0.02298 ms
+./resources/input/image5.jpg, Run #20: Hist (naive): 18.49082 ms, Hist (local mem): 0.19728 ms, CDF (naive): 0.03088 ms, CDF (blelloch): 0.02762 ms
+-------------------------------- SUMMARY FOR ./resources/input/image5.jpg --------------------------------
+Image size: 1243 x 1920 (2386560 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 148.091 ms
+Histogram (local mem): 0.184669 ms
+CDF (naive): 0.021435 ms
+CDF (blelloch): 0.0234635 ms
+SPEEDUPS:
+Histogram naive vs local memory: 801.9266 x faster
+CDF naive vs Blelloch: .9135 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image6.jpg, Run #1: Hist (naive): 20.62842 ms, Hist (local mem): 0.60346 ms, CDF (naive): 0.01869 ms, CDF (blelloch): 0.02138 ms
+./resources/input/image6.jpg, Run #2: Hist (naive): 534.39246 ms, Hist (local mem): 0.60435 ms, CDF (naive): 0.02070 ms, CDF (blelloch): 0.02278 ms
+./resources/input/image6.jpg, Run #3: Hist (naive): 6.44483 ms, Hist (local mem): 0.60186 ms, CDF (naive): 0.01926 ms, CDF (blelloch): 0.02160 ms
+./resources/input/image6.jpg, Run #4: Hist (naive): 20.37645 ms, Hist (local mem): 0.59901 ms, CDF (naive): 0.01616 ms, CDF (blelloch): 0.01850 ms
+./resources/input/image6.jpg, Run #5: Hist (naive): 391.97449 ms, Hist (local mem): 0.60477 ms, CDF (naive): 0.02016 ms, CDF (blelloch): 0.02304 ms
+./resources/input/image6.jpg, Run #6: Hist (naive): 614.91290 ms, Hist (local mem): 0.60432 ms, CDF (naive): 0.02157 ms, CDF (blelloch): 0.02368 ms
+./resources/input/image6.jpg, Run #7: Hist (naive): 38.26070 ms, Hist (local mem): 0.60272 ms, CDF (naive): 0.01987 ms, CDF (blelloch): 0.02170 ms
+./resources/input/image6.jpg, Run #8: Hist (naive): 36.71017 ms, Hist (local mem): 0.60432 ms, CDF (naive): 0.02042 ms, CDF (blelloch): 0.02339 ms
+./resources/input/image6.jpg, Run #9: Hist (naive): 181.39603 ms, Hist (local mem): 0.60221 ms, CDF (naive): 0.01933 ms, CDF (blelloch): 0.02166 ms
+./resources/input/image6.jpg, Run #10: Hist (naive): 6.16954 ms, Hist (local mem): 0.60736 ms, CDF (naive): 0.01891 ms, CDF (blelloch): 0.02067 ms
+./resources/input/image6.jpg, Run #11: Hist (naive): 30.97059 ms, Hist (local mem): 0.59997 ms, CDF (naive): 0.01661 ms, CDF (blelloch): 0.01827 ms
+./resources/input/image6.jpg, Run #12: Hist (naive): 6.10480 ms, Hist (local mem): 0.60093 ms, CDF (naive): 0.01485 ms, CDF (blelloch): 0.01594 ms
+./resources/input/image6.jpg, Run #13: Hist (naive): 130.06064 ms, Hist (local mem): 0.59859 ms, CDF (naive): 0.01638 ms, CDF (blelloch): 0.01773 ms
+./resources/input/image6.jpg, Run #14: Hist (naive): 16.84710 ms, Hist (local mem): 0.59709 ms, CDF (naive): 0.01626 ms, CDF (blelloch): 0.01728 ms
+./resources/input/image6.jpg, Run #15: Hist (naive): 66.46445 ms, Hist (local mem): 0.59635 ms, CDF (naive): 0.02045 ms, CDF (blelloch): 0.01763 ms
+./resources/input/image6.jpg, Run #16: Hist (naive): 12.79907 ms, Hist (local mem): 0.59654 ms, CDF (naive): 0.01635 ms, CDF (blelloch): 0.01712 ms
+./resources/input/image6.jpg, Run #17: Hist (naive): 435.33218 ms, Hist (local mem): 0.60790 ms, CDF (naive): 0.02125 ms, CDF (blelloch): 0.02339 ms
+./resources/input/image6.jpg, Run #18: Hist (naive): 596.91516 ms, Hist (local mem): 0.60694 ms, CDF (naive): 0.02022 ms, CDF (blelloch): 0.02294 ms
+./resources/input/image6.jpg, Run #19: Hist (naive): 12.38544 ms, Hist (local mem): 0.60470 ms, CDF (naive): 0.02147 ms, CDF (blelloch): 0.02282 ms
+./resources/input/image6.jpg, Run #20: Hist (naive): 28.49866 ms, Hist (local mem): 0.60122 ms, CDF (naive): 0.01958 ms, CDF (blelloch): 0.02141 ms
+-------------------------------- SUMMARY FOR ./resources/input/image6.jpg --------------------------------
+Image size: 3614 x 2409 (8706126 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 159.382 ms
+Histogram (local mem): 0.60223 ms
+CDF (naive): 0.0189245 ms
+CDF (blelloch): 0.0206465 ms
+SPEEDUPS:
+Histogram naive vs local memory: 264.6530 x faster
+CDF naive vs Blelloch: .9165 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image7.jpg, Run #1: Hist (naive): 58.63315 ms, Hist (local mem): 1.18973 ms, CDF (naive): 0.01658 ms, CDF (blelloch): 0.01923 ms
+./resources/input/image7.jpg, Run #2: Hist (naive): 19.69875 ms, Hist (local mem): 1.18614 ms, CDF (naive): 0.01469 ms, CDF (blelloch): 0.01754 ms
+./resources/input/image7.jpg, Run #3: Hist (naive): 30.58294 ms, Hist (local mem): 1.18678 ms, CDF (naive): 0.01590 ms, CDF (blelloch): 0.01798 ms
+./resources/input/image7.jpg, Run #4: Hist (naive): 416.12079 ms, Hist (local mem): 1.19267 ms, CDF (naive): 0.02118 ms, CDF (blelloch): 0.02406 ms
+./resources/input/image7.jpg, Run #5: Hist (naive): 368.91083 ms, Hist (local mem): 1.19696 ms, CDF (naive): 0.02115 ms, CDF (blelloch): 0.02400 ms
+./resources/input/image7.jpg, Run #6: Hist (naive): 506.88431 ms, Hist (local mem): 1.19373 ms, CDF (naive): 0.02125 ms, CDF (blelloch): 0.02349 ms
+./resources/input/image7.jpg, Run #7: Hist (naive): 328.05093 ms, Hist (local mem): 1.19629 ms, CDF (naive): 0.02179 ms, CDF (blelloch): 0.02355 ms
+./resources/input/image7.jpg, Run #8: Hist (naive): 250.96739 ms, Hist (local mem): 1.20362 ms, CDF (naive): 0.02144 ms, CDF (blelloch): 0.02352 ms
+./resources/input/image7.jpg, Run #9: Hist (naive): 410.73264 ms, Hist (local mem): 1.19514 ms, CDF (naive): 0.02192 ms, CDF (blelloch): 0.02426 ms
+./resources/input/image7.jpg, Run #10: Hist (naive): 241.95631 ms, Hist (local mem): 1.19635 ms, CDF (naive): 0.02109 ms, CDF (blelloch): 0.02314 ms
+./resources/input/image7.jpg, Run #11: Hist (naive): 320.73605 ms, Hist (local mem): 1.20509 ms, CDF (naive): 0.02160 ms, CDF (blelloch): 0.02285 ms
+./resources/input/image7.jpg, Run #12: Hist (naive): 268.95877 ms, Hist (local mem): 1.19654 ms, CDF (naive): 0.02147 ms, CDF (blelloch): 0.02419 ms
+./resources/input/image7.jpg, Run #13: Hist (naive): 506.15445 ms, Hist (local mem): 1.19523 ms, CDF (naive): 0.02125 ms, CDF (blelloch): 0.02422 ms
+./resources/input/image7.jpg, Run #14: Hist (naive): 350.49435 ms, Hist (local mem): 1.19834 ms, CDF (naive): 0.02090 ms, CDF (blelloch): 0.02349 ms
+./resources/input/image7.jpg, Run #15: Hist (naive): 338.00848 ms, Hist (local mem): 1.19504 ms, CDF (naive): 0.02083 ms, CDF (blelloch): 0.02339 ms
+./resources/input/image7.jpg, Run #16: Hist (naive): 378.83990 ms, Hist (local mem): 1.19296 ms, CDF (naive): 0.02170 ms, CDF (blelloch): 0.02410 ms
+./resources/input/image7.jpg, Run #17: Hist (naive): 294.50409 ms, Hist (local mem): 1.20614 ms, CDF (naive): 0.03219 ms, CDF (blelloch): 0.03386 ms
+./resources/input/image7.jpg, Run #18: Hist (naive): 399.47592 ms, Hist (local mem): 1.19328 ms, CDF (naive): 0.02077 ms, CDF (blelloch): 0.02336 ms
+./resources/input/image7.jpg, Run #19: Hist (naive): 367.56778 ms, Hist (local mem): 1.19552 ms, CDF (naive): 0.02058 ms, CDF (blelloch): 0.02362 ms
+./resources/input/image7.jpg, Run #20: Hist (naive): 301.59909 ms, Hist (local mem): 1.19754 ms, CDF (naive): 0.02096 ms, CDF (blelloch): 0.02413 ms
+-------------------------------- SUMMARY FOR ./resources/input/image7.jpg --------------------------------
+Image size: 4961 x 3508 (17403188 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 307.944 ms
+Histogram (local mem): 1.19565 ms
+CDF (naive): 0.020962 ms
+CDF (blelloch): 0.023399 ms
+SPEEDUPS:
+Histogram naive vs local memory: 257.5536 x faster
+CDF naive vs Blelloch: .8958 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image8.jpg, Run #1: Hist (naive): 28.61648 ms, Hist (local mem): 1.62688 ms, CDF (naive): 0.01549 ms, CDF (blelloch): 0.01731 ms
+./resources/input/image8.jpg, Run #2: Hist (naive): 19.68995 ms, Hist (local mem): 1.62614 ms, CDF (naive): 0.01504 ms, CDF (blelloch): 0.01638 ms
+./resources/input/image8.jpg, Run #3: Hist (naive): 74.39494 ms, Hist (local mem): 1.62506 ms, CDF (naive): 0.01530 ms, CDF (blelloch): 0.01683 ms
+./resources/input/image8.jpg, Run #4: Hist (naive): 306.48474 ms, Hist (local mem): 1.63350 ms, CDF (naive): 0.01709 ms, CDF (blelloch): 0.01981 ms
+./resources/input/image8.jpg, Run #5: Hist (naive): 43.99523 ms, Hist (local mem): 1.62698 ms, CDF (naive): 0.01501 ms, CDF (blelloch): 0.01648 ms
+./resources/input/image8.jpg, Run #6: Hist (naive): 232.05008 ms, Hist (local mem): 1.63520 ms, CDF (naive): 0.01750 ms, CDF (blelloch): 0.01971 ms
+./resources/input/image8.jpg, Run #7: Hist (naive): 269.02704 ms, Hist (local mem): 1.62902 ms, CDF (naive): 0.01686 ms, CDF (blelloch): 0.01920 ms
+./resources/input/image8.jpg, Run #8: Hist (naive): 13.85213 ms, Hist (local mem): 1.63030 ms, CDF (naive): 0.01571 ms, CDF (blelloch): 0.01706 ms
+./resources/input/image8.jpg, Run #9: Hist (naive): 287.96387 ms, Hist (local mem): 1.63146 ms, CDF (naive): 0.01686 ms, CDF (blelloch): 0.01878 ms
+./resources/input/image8.jpg, Run #10: Hist (naive): 25.25101 ms, Hist (local mem): 1.62352 ms, CDF (naive): 0.01366 ms, CDF (blelloch): 0.01536 ms
+./resources/input/image8.jpg, Run #11: Hist (naive): 95.17596 ms, Hist (local mem): 1.62691 ms, CDF (naive): 0.01462 ms, CDF (blelloch): 0.01603 ms
+./resources/input/image8.jpg, Run #12: Hist (naive): 396.31174 ms, Hist (local mem): 1.63254 ms, CDF (naive): 0.01840 ms, CDF (blelloch): 0.02042 ms
+./resources/input/image8.jpg, Run #13: Hist (naive): 17.73011 ms, Hist (local mem): 1.62474 ms, CDF (naive): 0.01437 ms, CDF (blelloch): 0.01638 ms
+./resources/input/image8.jpg, Run #14: Hist (naive): 18.94608 ms, Hist (local mem): 1.62832 ms, CDF (naive): 0.01389 ms, CDF (blelloch): 0.01539 ms
+./resources/input/image8.jpg, Run #15: Hist (naive): 108.40387 ms, Hist (local mem): 1.62835 ms, CDF (naive): 0.01434 ms, CDF (blelloch): 0.01626 ms
+./resources/input/image8.jpg, Run #16: Hist (naive): 242.67747 ms, Hist (local mem): 1.65408 ms, CDF (naive): 0.01856 ms, CDF (blelloch): 0.01987 ms
+./resources/input/image8.jpg, Run #17: Hist (naive): 73.66666 ms, Hist (local mem): 1.62643 ms, CDF (naive): 0.01331 ms, CDF (blelloch): 0.01626 ms
+./resources/input/image8.jpg, Run #18: Hist (naive): 137.52310 ms, Hist (local mem): 1.63629 ms, CDF (naive): 0.01446 ms, CDF (blelloch): 0.01616 ms
+./resources/input/image8.jpg, Run #19: Hist (naive): 309.24176 ms, Hist (local mem): 1.63990 ms, CDF (naive): 0.01680 ms, CDF (blelloch): 0.01904 ms
+./resources/input/image8.jpg, Run #20: Hist (naive): 30.96966 ms, Hist (local mem): 1.62410 ms, CDF (naive): 0.01507 ms, CDF (blelloch): 0.01571 ms
+-------------------------------- SUMMARY FOR ./resources/input/image8.jpg --------------------------------
+Image size: 6000 x 4000 (24000000 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 136.599 ms
+Histogram (local mem): 1.63049 ms
+CDF (naive): 0.015617 ms
+CDF (blelloch): 0.017422 ms
+SPEEDUPS:
+Histogram naive vs local memory: 83.7778 x faster
+CDF naive vs Blelloch: .8963 x faster
+--------------------------------------------------------------------------------
+
+./resources/input/image9.jpg, Run #1: Hist (naive): 40.65859 ms, Hist (local mem): 1.62790 ms, CDF (naive): 0.01520 ms, CDF (blelloch): 0.01648 ms
+./resources/input/image9.jpg, Run #2: Hist (naive): 21.08202 ms, Hist (local mem): 1.62538 ms, CDF (naive): 0.01581 ms, CDF (blelloch): 0.01690 ms
+./resources/input/image9.jpg, Run #3: Hist (naive): 31.30538 ms, Hist (local mem): 1.62714 ms, CDF (naive): 0.01434 ms, CDF (blelloch): 0.01530 ms
+./resources/input/image9.jpg, Run #4: Hist (naive): 502.17093 ms, Hist (local mem): 1.64118 ms, CDF (naive): 0.02115 ms, CDF (blelloch): 0.02349 ms
+./resources/input/image9.jpg, Run #5: Hist (naive): 137.67538 ms, Hist (local mem): 1.63882 ms, CDF (naive): 0.01939 ms, CDF (blelloch): 0.02131 ms
+./resources/input/image9.jpg, Run #6: Hist (naive): 438.53192 ms, Hist (local mem): 1.64230 ms, CDF (naive): 0.02003 ms, CDF (blelloch): 0.02211 ms
+./resources/input/image9.jpg, Run #7: Hist (naive): 271.90820 ms, Hist (local mem): 1.63501 ms, CDF (naive): 0.02189 ms, CDF (blelloch): 0.02467 ms
+./resources/input/image9.jpg, Run #8: Hist (naive): 300.96063 ms, Hist (local mem): 1.63686 ms, CDF (naive): 0.02093 ms, CDF (blelloch): 0.02336 ms
+./resources/input/image9.jpg, Run #9: Hist (naive): 286.56049 ms, Hist (local mem): 1.64365 ms, CDF (naive): 0.02026 ms, CDF (blelloch): 0.02253 ms
+./resources/input/image9.jpg, Run #10: Hist (naive): 313.60510 ms, Hist (local mem): 1.63318 ms, CDF (naive): 0.02118 ms, CDF (blelloch): 0.02262 ms
+./resources/input/image9.jpg, Run #11: Hist (naive): 227.16902 ms, Hist (local mem): 1.63293 ms, CDF (naive): 0.02067 ms, CDF (blelloch): 0.02275 ms
+./resources/input/image9.jpg, Run #12: Hist (naive): 246.90733 ms, Hist (local mem): 1.63258 ms, CDF (naive): 0.01814 ms, CDF (blelloch): 0.02070 ms
+./resources/input/image9.jpg, Run #13: Hist (naive): 315.30490 ms, Hist (local mem): 1.64083 ms, CDF (naive): 0.02038 ms, CDF (blelloch): 0.02282 ms
+./resources/input/image9.jpg, Run #14: Hist (naive): 259.02939 ms, Hist (local mem): 1.63267 ms, CDF (naive): 0.02070 ms, CDF (blelloch): 0.02262 ms
+./resources/input/image9.jpg, Run #15: Hist (naive): 308.46808 ms, Hist (local mem): 1.63546 ms, CDF (naive): 0.02198 ms, CDF (blelloch): 0.02416 ms
+./resources/input/image9.jpg, Run #16: Hist (naive): 206.53334 ms, Hist (local mem): 1.63290 ms, CDF (naive): 0.02118 ms, CDF (blelloch): 0.02301 ms
+./resources/input/image9.jpg, Run #17: Hist (naive): 383.75015 ms, Hist (local mem): 1.63485 ms, CDF (naive): 0.02115 ms, CDF (blelloch): 0.02470 ms
+./resources/input/image9.jpg, Run #18: Hist (naive): 211.51353 ms, Hist (local mem): 1.63325 ms, CDF (naive): 0.02102 ms, CDF (blelloch): 0.02301 ms
+./resources/input/image9.jpg, Run #19: Hist (naive): 338.17630 ms, Hist (local mem): 1.63581 ms, CDF (naive): 0.02157 ms, CDF (blelloch): 0.02432 ms
+./resources/input/image9.jpg, Run #20: Hist (naive): 252.41754 ms, Hist (local mem): 1.63498 ms, CDF (naive): 0.02106 ms, CDF (blelloch): 0.02362 ms
+-------------------------------- SUMMARY FOR ./resources/input/image9.jpg --------------------------------
+Image size: 6000 x 4000 (24000000 pixels), channels: 1
+AVERAGE TIMES (ALL RUNS):
+Histogram (naive): 254.686 ms
+Histogram (local mem): 1.63488 ms
+CDF (naive): 0.0199015 ms
+CDF (blelloch): 0.022024 ms
+SPEEDUPS:
+Histogram naive vs local memory: 155.7826 x faster
+CDF naive vs Blelloch: .9036 x faster
+--------------------------------------------------------------------------------
+
